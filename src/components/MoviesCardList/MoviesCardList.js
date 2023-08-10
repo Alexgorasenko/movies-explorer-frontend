@@ -2,12 +2,12 @@ import React from "react";
 
 
 
-function Main() {
+function MoviesCardList() {
 
 
   return (
-      <h1>Main</h1>
+      <h1>MoviesCardList</h1>
   );
 }
 
-export default Main;
+export default MoviesCardList;

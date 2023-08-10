@@ -2,12 +2,12 @@ import React from "react";
 
 
 
-function Main() {
+function Preloader() {
 
 
   return (
-      <h1>Main</h1>
+      <h1>Preloader</h1>
   );
 }
 
-export default Main;
+export default Preloader;

@@ -1,0 +1,39 @@
+.nav-tab__menu {
+  /* position: absolute;
+  bottom: 0;
+  left: 446px; */
+}
+
+.nav-tab__list {
+  padding: 0;
+  display: flex;
+  margin: 0 0 30px;
+}
+
+.nav-tab__item {
+  list-style-type: none;
+  width: 96px;
+  height: 36px;
+  background: #303030;
+  border-radius: 10px;
+  display: flex;
+  justify-content:center ;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.nav-tab__item:last-child{
+  margin-right: 0;
+}
+
+.nav-tab__link {
+
+  text-decoration: none;
+  color: #FFF;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.33;
+
+}
