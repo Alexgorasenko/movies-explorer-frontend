@@ -27,7 +27,7 @@ function Header() {
             </li>
           </ul>
 
-          <Link to="/pr" className="header__nav-link">
+          <Link to="/profile" className="header__nav-link">
             <button className="header__nav-link-profile">Аккаунт</button>
           </Link>
         </nav>

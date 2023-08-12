@@ -1,0 +1,101 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  max-width: 410px;
+  width: 100%;
+  margin-top: 74px;
+}
+
+.profile__title {
+  color: #FFF;
+  text-align: center;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0;
+  margin-bottom: 123px;
+}
+
+.profile__form{
+  display: flex;
+  flex-direction: column;
+}
+
+.profile__form-input-container {
+  position: relative;
+  display: flex;
+  border-bottom: 1px solid #424242;
+  padding-bottom: 16px;
+  justify-content: space-between;
+}
+
+.profile__form-input-container:nth-child(2) {
+  border-bottom: none;
+  margin-top: 17px;
+  padding-bottom: 0px;
+}
+
+
+.profile__form-input-title {
+  color: #FFF;
+  font-family: Inter;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+
+.profile__input {
+  background-color: transparent;
+  border: none;
+  color: #FFF;
+  text-align: right;
+  font-family: Inter;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  outline: none;
+}
+
+.profile__from-input-error {
+  position: absolute;
+  color: #EE3465;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  bottom: -15px;
+}
+
+.profile__form-submit {
+  color: #FFF;
+  text-align: center;
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 220px;
+  background-color: transparent;
+  border: none;
+
+}
+
+.profile__logout {
+  color: #EE3465;
+  text-align: center;
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-top: 16px;
+  margin-bottom: 70px;
+  background-color: transparent;
+  border: none;
+}
