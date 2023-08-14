@@ -1,23 +1,23 @@
 import React from "react";
 import "./NavTab.css";
-import { Route, Routes, Link } from "react-router-dom";
+import { HashLink as Link } from 'react-router-hash-link';
 
 function NavTab() {
   return (
     <nav className="nav-tab__menu">
       <ul className="nav-tab__list">
         <li className="nav-tab__item">
-          <Link to="#about-project" className="nav-tab__link">
+          <Link to="#about-project"   className="nav-tab__link" smooth>
             О проекте
           </Link>
         </li>
         <li className="nav-tab__item">
-          <Link to="#techs" className="nav-tab__link">
+          <Link to="#techs" className="nav-tab__link" smooth>
             Технологии
           </Link>
         </li>
         <li className="nav-tab__item">
-          <Link to="#about-me" className="nav-tab__link">
+          <Link to="#about-me" className="nav-tab__link" smooth>
             Студент
           </Link>
         </li>
