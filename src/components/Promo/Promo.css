@@ -1,6 +1,6 @@
 .promo {
   max-width: 1200px;
-  width: 100%;
+  width: calc(100% - 40px*2);
   height: 493px;
   border-radius: 10px;
   background: #272727;
@@ -21,5 +21,35 @@
   font-weight: 400;
   line-height: 1.16;
   letter-spacing: -2px;
-  margin:160px auto 0;
+  margin: 160px auto 0;
+
+}
+
+@media screen and (max-width: 1024px) {
+  .promo {
+    width: calc(100% - 20px*2);
+
+  }
+
+  .promo__title {
+    font-size: 40px;
+    line-height: 1.30;
+    letter-spacing: -1.6px;
+    max-width: 680px;
+
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .promo {
+    width: calc(100% - 14px*2);
+
+  }
+
+  .promo__title {
+    font-size: 29px;
+    line-height: 1.27;
+    letter-spacing: -1.16px;
+    max-width: 292px;
+  }
 }
