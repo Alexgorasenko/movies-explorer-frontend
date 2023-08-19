@@ -13,7 +13,7 @@
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.88px;
-  border-bottom: 1px solid #424242;
+  border-bottom: 1px solid #DADADA;
   padding-bottom: 23px;
 }
 
@@ -37,7 +37,7 @@
   letter-spacing: -2px;
 }
 
-.techs__description-text {
+.techs__description-subtitle {
   margin: 0;
   color: #FFF;
   text-align: center;
@@ -82,4 +82,61 @@
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.56px;
+}
+
+
+@media screen and (max-width: 1024px) {
+  .techs__description-subtitle {
+    font-size: 12px;
+    line-height: 1.5;
+    letter-spacing: -0.48px;
+
+  }
+
+  .techs__item {
+    width: 84px;
+    height: 57px;
+  }
+
+  .techs__item-name {
+    font-size: 12px;
+    letter-spacing: -0.48px;
+  }
+
+  .techs__title {
+    margin: 90px 50px 0 50px;
+  }
+
+
+}
+
+@media screen and (max-width: 600px) {
+
+  .techs {
+    background-color: transparent;
+  }
+
+  .techs__title {
+    margin: 90px 50px 0 50px;
+    border-bottom: 1px solid #000;
+
+  }
+
+  .techs__description-subtitle {
+    font-size: 11px;
+    line-height: 1.45;
+    letter-spacing: -0.44px;
+    max-width: 292px;
+
+  }
+
+  .techs__list {
+    display: grid;
+    grid-template-columns: 84px 84px;
+    gap: 10px;
+  }
+
+  .techs__title {
+    margin: 70px 18px 0 18px;
+  }
 }

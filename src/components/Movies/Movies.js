@@ -2,14 +2,14 @@ import React from "react";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Preloader from "../Preloader/Preloader";
 import SearchForm from "../SearchForm/SearchForm";
-
+import "./Movies.css"
 
 
 function Movies() {
 
 
   return (
-    <section>
+    <section className="movies">
       <SearchForm></SearchForm>
       <Preloader></Preloader>
       <MoviesCardList></MoviesCardList>
