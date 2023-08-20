@@ -1,55 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../../images/logo.svg";
-import { Route, Routes, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Header.css";
+import Navigation from "../Navigation/Navigation";
+import Burger from "../Burger/Burger";
+import Popup from "../Popup/Popup";
 
-// const islogin = false;
-const islogin = true;
+
+
 
 function Header() {
+
+  const [isPopupOpen, setPopupOpen] = useState(false);
+
+  const handleOneClick = ()=>{
+    setPopupOpen(true)
+  }
+
+  const closePopup = ()=>{
+    setPopupOpen(false)
+  }
+
+
+
   return (
     <header className="header">
-      {islogin ? (
-        <nav className="header__nav-menu">
-          <Link to="/" className="header__nav-link">
-            <img src={logo} alt="Логотип сайта" className="header__logo" />
-          </Link>
-          <ul className="header__nav-link-list">
-            <li className="header__nav-link-item">
-              <Link to="/movies" className="header__nav-link">
-                Фильмы
-              </Link>
-            </li>
-            <li className="header__nav-link-item">
-              <Link to="/saved-movies" className="header__nav-link">
-                Сохранённые фильмы
-              </Link>
-            </li>
-          </ul>
+      <Link to="/" className="header__nav-link">
+        <img src={logo} alt="Логотип сайта" className="header__logo" />
+      </Link>
+      <Navigation></Navigation>
+      <Burger handleOneClick={handleOneClick}></Burger>
+      <Popup isPopupOpen={isPopupOpen} onClose={closePopup}></Popup>
 
-          <Link to="/profile" className="header__nav-link">
-            <button className="header__nav-link-profile">Аккаунт</button>
-          </Link>
-        </nav>
-      ) : (
-        <nav className="header__nav-menu">
-          <Link to="/" className="header__nav-link">
-            <img src={logo} alt="Логотип сайта" className="header__logo" />
-          </Link>
-          <ul className="header__nav-link-list">
-            <li className="header__nav-link-item">
-              <Link to="/signup" className="header__nav-link">
-                Регистрация
-              </Link>
-            </li>
-            <li className="header__nav-link-item">
-              <Link to="/signin" className="header__nav-link">
-                <button className="header__nav-link-login">Войти</button>
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      )}
     </header>
   );
 }
