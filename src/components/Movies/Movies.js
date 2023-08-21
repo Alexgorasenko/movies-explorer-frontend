@@ -11,8 +11,9 @@ function Movies() {
   return (
     <section className="movies">
       <SearchForm></SearchForm>
-      <Preloader></Preloader>
+      {/* <Preloader></Preloader> */}
       <MoviesCardList></MoviesCardList>
+      <button className="movies__more-button">Ещё</button>
     </section>
   );
 }
