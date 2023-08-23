@@ -1,5 +1,5 @@
 import React from "react";
-import "./Footer.css"
+import "./Footer.css";
 
 function Footer() {
   return (
@@ -9,14 +9,28 @@ function Footer() {
       </h3>
       <div className="footer__detale">
         <p className="footer__copyright">&copy; 2023. Александр Горащенко</p>
-        <nav className="footer__links">
-          <a href="https://practicum.yandex.ru/" target="_blank" class="footer__link" rel="noreferrer">
-            Яндекс.Практикум
-          </a>
-          <a href="https://github.com/Alexgorasenko" target="_blank" class="footer__link" rel="noreferrer">
-            Github
-          </a>
-        </nav>
+        <ul className="footer__links">
+          <li className="footer__links-item">
+            <a
+              href="https://practicum.yandex.ru/"
+              target="_blank"
+              className="footer__link"
+              rel="noreferrer"
+            >
+              Яндекс.Практикум
+            </a>
+          </li>
+          <li className="footer__links-item">
+            <a
+              href="https://github.com/Alexgorasenko"
+              target="_blank"
+              className="footer__link"
+              rel="noreferrer"
+            >
+              Github
+            </a>
+          </li>
+        </ul>
       </div>
     </footer>
   );

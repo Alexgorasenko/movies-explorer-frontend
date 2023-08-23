@@ -15,7 +15,11 @@ function Portfolio() {
             rel="noreferrer"
           >
             <span className="portfolio__link-text">Статичный сайт</span>
-            <img src={arrow} alt="Стрелочка ссылки" className="portfolio__link-image" />
+            <img
+              src={arrow}
+              alt="Стрелочка ссылки"
+              className="portfolio__link-image"
+            />
           </a>
         </li>
         <li className="portfolio__item">
@@ -26,7 +30,11 @@ function Portfolio() {
             rel="noreferrer"
           >
             <span className="portfolio__link-text">Адаптивный сайт</span>
-            <img src={arrow} alt="Стрелочка ссылки" className="portfolio__link-image" />
+            <img
+              src={arrow}
+              alt="Стрелочка ссылки"
+              className="portfolio__link-image"
+            />
           </a>
         </li>
         <li className="portfolio__item">
@@ -36,8 +44,14 @@ function Portfolio() {
             className="portfolio__link"
             rel="noreferrer"
           >
-            <span className="portfolio__link-text">Одностраничное приложение</span>
-            <img src={arrow} alt="Стрелочка ссылки" className="portfolio__link-image" />
+            <span className="portfolio__link-text">
+              Одностраничное приложение
+            </span>
+            <img
+              src={arrow}
+              alt="Стрелочка ссылки"
+              className="portfolio__link-image"
+            />
           </a>
         </li>
       </ul>

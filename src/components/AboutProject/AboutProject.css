@@ -1,5 +1,5 @@
 .about-project {
-  margin-top: 120px;
+  margin-top: 110px;
   width: calc(100% - 70px * 2);
   max-width: 1280px;
 
@@ -15,10 +15,12 @@
   letter-spacing: -0.88px;
   border-bottom: 1px solid #DADADA;
   padding-bottom: 23px;
+  margin: 0;
 }
 
 .about-project__description {
   display: flex;
+  margin-top: 70px;
 }
 
 .about-project__description-title {
@@ -45,6 +47,8 @@
 
 .about-project__description-first-column {
   margin-right: 40px;
+  max-width: 550px;
+  width: 100%;
 }
 
 .about-project__timeline {
@@ -76,7 +80,7 @@
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
+  line-height: 1.29;
   padding-top: 9px;
   padding-bottom: 9px;
   margin-bottom: 14px;
@@ -93,7 +97,7 @@
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
+  line-height: 1.29;
   background-color: #303030;
   margin-bottom: 14px;
 }
@@ -113,11 +117,11 @@
 
   .about-project {
     width: calc(100% - 50px * 2);
-
+    margin-top: 90px;
   }
 
   .about-project__description-first-column {
-    margin-right: 30px;
+    margin-right: 25px;
   }
 
   .about-project__description-text {
@@ -126,9 +130,12 @@
   }
 
   .about-project__description-title {
-  margin-bottom: 22px;
+    margin-bottom: 22px;
   }
 
+  .about-project__timeline {
+    margin-top: 93px;
+  }
 
 }
 
@@ -137,6 +144,8 @@
 
   .about-project {
     width: calc(100% - 18px * 2);
+    margin-top: 70px;
+
 
   }
 
@@ -148,12 +157,13 @@
   .about-project__title {
     font-size: 18px;
     letter-spacing: -0.72px;
-
+    padding-bottom: 28px;
   }
 
   .about-project__description {
     flex-direction: column;
     margin-bottom: 60px;
+    margin-top: 60px;
 
 
   }
@@ -161,7 +171,7 @@
   .about-project__description-title {
     font-size: 18px;
     letter-spacing: -0.72px;
-  margin-bottom: 16px;
+    margin-bottom: 16px;
   }
 
   .about-project__description-text {
@@ -172,15 +182,33 @@
   .about-project__timeline-backend_text {
     font-size: 11px;
     margin-bottom: 10px;
+    padding-top: 11px;
+    padding-bottom: 11px;
+    line-height: 1.18;
   }
 
   .about-project__timeline-frontend_text {
     font-size: 11px;
     margin-bottom: 10px;
+    padding-top: 11px;
+    padding-bottom: 11px;
+    line-height: 1.18;
   }
 
   .about-project__timeline-description {
     font-size: 11px;
   }
 
+
+  .about-project__timeline-backend {
+    width: 35%;
+  }
+
+  .about-project__timeline-frontend {
+    width: 65%;
+  }
+
+  .about-project__timeline {
+    margin-top: 0px;
+  }
 }

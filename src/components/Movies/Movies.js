@@ -13,7 +13,6 @@ function Movies() {
       <SearchForm></SearchForm>
       {/* <Preloader></Preloader> */}
       <MoviesCardList></MoviesCardList>
-      <button className="movies__more-button">Ещё</button>
     </section>
   );
 }

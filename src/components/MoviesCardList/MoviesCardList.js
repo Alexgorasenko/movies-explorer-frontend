@@ -234,6 +234,7 @@ function MoviesCardList() {
           return <MoviesCard key={movie._id} movie={movie} />;
         })}
       </div>
+      <button className="movies__more-button">Ещё</button>
     </section>
   );
 }

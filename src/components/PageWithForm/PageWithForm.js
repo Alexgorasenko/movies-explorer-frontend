@@ -1,11 +1,7 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Routes, Link } from "react-router-dom";
 import logo from "../../images/logo.svg";
-import Register from "../Register/Register";
 import "./PageWithForm.css";
-
-
-
 
 function PageWithForm({
   title,
@@ -16,8 +12,8 @@ function PageWithForm({
   authButtonText,
   authButtonLink,
   pageType,
+  handleOneClick
 }) {
-
   const [inputName, setInputName] = useState();
   const [inputEmail, setInputEmail] = useState();
   const [inputPassword, setInputPassword] = useState();
@@ -33,8 +29,6 @@ function PageWithForm({
   function handlePasswordOnChange(e) {
     setInputPassword(e.target.value);
   }
-
-
 
   return (
     <section className="page-form">
@@ -52,9 +46,7 @@ function PageWithForm({
       >
         {pageType === "register" ? (
           <label className="page-form__form-label">
-            <span className="page-form__input-title">
-              Имя
-            </span>
+            <span className="page-form__input-title">Имя</span>
             <input
               type="text"
               className="page-form__input"
@@ -71,42 +63,38 @@ function PageWithForm({
           </label>
         ) : null}
         <label className="page-form__form-label">
-            <span className="page-form__input-title">
-            E-mail
-            </span>
-            <input
-              type="text"
-              className="page-form__input"
-              name="email"
-              placeholder="Введите email"
-              id="email-input"
-              required
-              onChange={handleEmailOnChange}
-              value={inputEmail || ""}
-            />
-            <span className="page-form__input-error">
-              Вы пропустили это поле.
-            </span>
-          </label>
-          <label className="page-form__form-label">
-            <span className="page-form__input-title">
-            Пароль
-            </span>
-            <input
-              type="text"
-              className="page-form__input"
-              name="password"
-              placeholder="Введите Пароль"
-              id="password-input"
-              required
-              onChange={handlePasswordOnChange}
-              value={inputPassword || ""}
-            />
-            <span className="page-form__input-error">
-              Вы пропустили это поле.
-            </span>
-          </label>
-        <button type="submit" className="page-form__submit">
+          <span className="page-form__input-title">E-mail</span>
+          <input
+            type="text"
+            className="page-form__input"
+            name="email"
+            placeholder="Введите email"
+            id="email-input"
+            required
+            onChange={handleEmailOnChange}
+            value={inputEmail || ""}
+          />
+          <span className="page-form__input-error">
+            Вы пропустили это поле.
+          </span>
+        </label>
+        <label className="page-form__form-label">
+          <span className="page-form__input-title">Пароль</span>
+          <input
+            type="text"
+            className="page-form__input"
+            name="password"
+            placeholder="Введите Пароль"
+            id="password-input"
+            required
+            onChange={handlePasswordOnChange}
+            value={inputPassword || ""}
+          />
+          <span className="page-form__input-error">
+            Вы пропустили это поле.
+          </span>
+        </label>
+        <button type="submit" className="page-form__submit" onClick={handleOneClick}>
           {buttonText}
         </button>
       </form>

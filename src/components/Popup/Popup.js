@@ -2,10 +2,7 @@ import React from "react";
 import "./Popup.css";
 import { Link } from "react-router-dom";
 
-
-
 function Popup(props) {
-
   return (
     <div className={`popup ${props.isPopupOpen ? "popup_opened" : ""}`}>
       <div className="popup__container">
@@ -23,17 +20,29 @@ function Popup(props) {
               </Link>
             </li>
             <li className="popup__nav-link-item">
-              <Link to="/movies" className="popup__nav-link" onClick={props.onClose}>
+              <Link
+                to="/movies"
+                className="popup__nav-link"
+                onClick={props.onClose}
+              >
                 Фильмы
               </Link>
             </li>
             <li className="popup__nav-link-item">
-              <Link to="/saved-movies" className="popup__nav-link" onClick={props.onClose}>
+              <Link
+                to="/saved-movies"
+                className="popup__nav-link"
+                onClick={props.onClose}
+              >
                 Сохранённые фильмы
               </Link>
             </li>
           </ul>
-          <Link to="/profile" className="popup__nav-link" onClick={props.onClose}>
+          <Link
+            to="/profile"
+            className="popup__nav-link"
+            onClick={props.onClose}
+          >
             <button className="popup__nav-link-profile">Аккаунт</button>
           </Link>
         </nav>

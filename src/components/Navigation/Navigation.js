@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import "./Navigation.css";
 
 function Navigation() {
-  // const islogin = false;
-  const islogin = true;
+  const islogin = false;
+  // const islogin = true;
   return (
     <>
       {islogin ? (
@@ -28,7 +28,7 @@ function Navigation() {
         </nav>
       ) : (
         <nav className="navigation__nav-menu">
-          <ul className="navigation__nav-link-list">
+          <ul className="navigation__nav-link-login-list">
             <li className="navigation__nav-link-item">
               <Link to="/signup" className="navigation__nav-link">
                 Регистрация

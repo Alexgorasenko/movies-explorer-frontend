@@ -28,6 +28,7 @@
 @media screen and (max-width: 1024px) {
   .promo {
     width: calc(100% - 20px*2);
+    height: 834px;
 
   }
 
@@ -36,6 +37,7 @@
     line-height: 1.30;
     letter-spacing: -1.6px;
     max-width: 680px;
+    margin-top: 350px;
 
   }
 }
@@ -43,6 +45,9 @@
 @media screen and (max-width: 600px) {
   .promo {
     width: calc(100% - 14px*2);
+  margin-top: 14px;
+  height: 586px;
+
 
   }
 
@@ -51,5 +56,7 @@
     line-height: 1.27;
     letter-spacing: -1.16px;
     max-width: 292px;
+    margin-top: 220px;
+
   }
 }

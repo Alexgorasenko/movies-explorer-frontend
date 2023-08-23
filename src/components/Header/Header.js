@@ -6,22 +6,19 @@ import Navigation from "../Navigation/Navigation";
 import Burger from "../Burger/Burger";
 import Popup from "../Popup/Popup";
 
-
-
-
 function Header() {
-
   const [isPopupOpen, setPopupOpen] = useState(false);
 
-  const handleOneClick = ()=>{
-    setPopupOpen(true)
-  }
+  const handleOneClick = () => {
+    setPopupOpen(true);
+  };
 
-  const closePopup = ()=>{
-    setPopupOpen(false)
-  }
+  const closePopup = () => {
+    setPopupOpen(false);
+  };
 
-
+  const islogin = false;
+  // const islogin = true;
 
   return (
     <header className="header">
@@ -31,7 +28,6 @@ function Header() {
       <Navigation></Navigation>
       <Burger handleOneClick={handleOneClick}></Burger>
       <Popup isPopupOpen={isPopupOpen} onClose={closePopup}></Popup>
-
     </header>
   );
 }
