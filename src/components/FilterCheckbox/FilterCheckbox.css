@@ -60,3 +60,13 @@ input:checked+.filter-checkbox__slider:before {
   line-height: 1.5;
   margin-left: 12px;
 }
+
+
+@media screen and (max-width: 600px) {
+  .filter-checkbox__description {
+    font-size: 11px;
+    line-height: 1.63;
+    margin-left: 13px;
+  }
+
+}

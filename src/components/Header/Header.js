@@ -17,16 +17,37 @@ function Header() {
     setPopupOpen(false);
   };
 
-  const islogin = false;
-  // const islogin = true;
+  // const islogin = false;
+  const islogin = true;
 
   return (
     <header className="header">
       <Link to="/" className="header__nav-link">
         <img src={logo} alt="Логотип сайта" className="header__logo" />
       </Link>
-      <Navigation></Navigation>
-      <Burger handleOneClick={handleOneClick}></Burger>
+      {islogin ? (
+        <>
+        <Navigation></Navigation>
+        <Burger handleOneClick={handleOneClick}></Burger>
+        </>
+      ) : (
+        <nav className="header__nav-menu">
+          <ul className="header__nav-link-login-list">
+            <li className="header__nav-link-item">
+              <Link to="/signup" className="header__nav-link">
+                Регистрация
+              </Link>
+            </li>
+            <li className="header__nav-link-item">
+              <Link to="/signin" className="header__nav-link">
+                <button className="header__nav-link-login">Войти</button>
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      )}
+
+
       <Popup isPopupOpen={isPopupOpen} onClose={closePopup}></Popup>
     </header>
   );
