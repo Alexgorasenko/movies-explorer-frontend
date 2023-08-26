@@ -33,6 +33,7 @@
   height: 36px;
 }
 
+
 @media screen and (max-width: 1024px) {
   .movies-cards__list {
     grid-template-columns: 1fr 1fr;

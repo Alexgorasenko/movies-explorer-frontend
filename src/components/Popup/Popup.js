@@ -1,8 +1,11 @@
 import React from "react";
 import "./Popup.css";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 function Popup(props) {
+  const location = useLocation();
+
   return (
     <div className={`popup ${props.isPopupOpen ? "popup_opened" : ""}`}>
       <div className="popup__container">
@@ -15,14 +18,26 @@ function Popup(props) {
         <nav className="popup__nav-menu">
           <ul className="popup__nav-link-list">
             <li className="popup__nav-link-item">
-              <Link to="/" className="popup__nav-link" onClick={props.onClose}>
+              <Link
+                to="/"
+                className={
+                  location.pathname === "/"
+                    ? "popup__nav-link popup__nav-link_active link"
+                    : "popup__nav-link link"
+                }
+                onClick={props.onClose}
+              >
                 Главная
               </Link>
             </li>
             <li className="popup__nav-link-item">
               <Link
                 to="/movies"
-                className="popup__nav-link"
+                className={
+                  location.pathname === "/movies"
+                    ? "popup__nav-link popup__nav-link_active link"
+                    : "popup__nav-link link"
+                }
                 onClick={props.onClose}
               >
                 Фильмы
@@ -31,7 +46,11 @@ function Popup(props) {
             <li className="popup__nav-link-item">
               <Link
                 to="/saved-movies"
-                className="popup__nav-link"
+                className={
+                  location.pathname === "/saved-movies"
+                    ? "popup__nav-link popup__nav-link_active link"
+                    : "popup__nav-link link"
+                }
                 onClick={props.onClose}
               >
                 Сохранённые фильмы

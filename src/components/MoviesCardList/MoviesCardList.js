@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import "./MoviesCardList.css";
+import "../Button/Button.css";
 
 function MoviesCardList(props) {
 
@@ -37,7 +38,7 @@ function MoviesCardList(props) {
           return <MoviesCard key={movie._id} movie={movie} />;
         })}
       </div>
-      {moviesListLength < props.movies.length && (<button className="movies-cards__more-button">Ещё</button>)}
+      {moviesListLength < props.movies.length && (<button className="movies-cards__more-button button">Ещё</button>)}
 
     </section>
   );

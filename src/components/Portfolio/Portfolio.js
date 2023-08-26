@@ -1,13 +1,15 @@
 import React from "react";
 import "./Portfolio.css";
 import arrow from "../../images/arrow.svg";
+import "../Button/Button.css";
+
 
 function Portfolio() {
   return (
     <section className="portfolio">
       <h2 className="portfolio__title">Портфолио</h2>
       <ul className="portfolio__list">
-        <li className="portfolio__item">
+        <li className="portfolio__item button">
           <a
             href="http://vodlozero.ru"
             target="_blank"
@@ -22,7 +24,7 @@ function Portfolio() {
             />
           </a>
         </li>
-        <li className="portfolio__item">
+        <li className="portfolio__item button">
           <a
             href="http://vodlozero.ru"
             target="_blank"
@@ -37,7 +39,7 @@ function Portfolio() {
             />
           </a>
         </li>
-        <li className="portfolio__item">
+        <li className="portfolio__item button">
           <a
             href="http://vodlozero.ru"
             target="_blank"

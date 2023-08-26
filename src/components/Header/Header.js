@@ -5,6 +5,8 @@ import "./Header.css";
 import Navigation from "../Navigation/Navigation";
 import Burger from "../Burger/Burger";
 import Popup from "../Popup/Popup";
+import "../Button/Button.css";
+
 
 function Header() {
   const [isPopupOpen, setPopupOpen] = useState(false);
@@ -17,12 +19,13 @@ function Header() {
     setPopupOpen(false);
   };
 
+
   // const islogin = false;
   const islogin = true;
 
   return (
     <header className="header">
-      <Link to="/" className="header__nav-link">
+      <Link to="/" className="header__nav-link button">
         <img src={logo} alt="Логотип сайта" className="header__logo" />
       </Link>
       {islogin ? (
@@ -34,13 +37,13 @@ function Header() {
         <nav className="header__nav-menu">
           <ul className="header__nav-link-login-list">
             <li className="header__nav-link-item">
-              <Link to="/signup" className="header__nav-link">
+              <Link to="/signup" className="header__nav-link button">
                 Регистрация
               </Link>
             </li>
             <li className="header__nav-link-item">
-              <Link to="/signin" className="header__nav-link">
-                <button className="header__nav-link-login">Войти</button>
+              <Link to="/signin" className="header__nav-link ">
+                <button className="header__nav-link-login button">Войти</button>
               </Link>
             </li>
           </ul>

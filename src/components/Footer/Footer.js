@@ -1,6 +1,8 @@
 import React from "react";
 import "./Footer.css";
 import { useLocation } from "react-router-dom";
+import "../Link/Link.css";
+
 
 
 function Footer() {
@@ -23,7 +25,7 @@ function Footer() {
             <a
               href="https://practicum.yandex.ru/"
               target="_blank"
-              className="footer__link"
+              className="footer__link link"
               rel="noreferrer"
             >
               Яндекс.Практикум
@@ -33,7 +35,7 @@ function Footer() {
             <a
               href="https://github.com/Alexgorasenko"
               target="_blank"
-              className="footer__link"
+              className="footer__link link"
               rel="noreferrer"
             >
               Github

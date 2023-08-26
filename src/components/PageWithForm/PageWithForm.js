@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Route, Routes, Link } from "react-router-dom";
 import logo from "../../images/logo.svg";
 import "./PageWithForm.css";
+import "../Button/Button.css";
+import "../Link/Link.css";
+
+
 
 function PageWithForm({
   title,
@@ -33,7 +37,7 @@ function PageWithForm({
   return (
     <section className="page-form">
       <div className="page-form__container">
-        <Link to="/" className="page-form__nav-link">
+        <Link to="/" className="page-form__nav-link button">
           <img src={logo} alt="Логотип сайта" className="header__logo" />
         </Link>
         <h3 className="page-form__title">{title}</h3>
@@ -91,7 +95,7 @@ function PageWithForm({
           </label>
           <button
             type="submit"
-            className="page-form__submit"
+            className="page-form__submit button"
             onClick={handleOneClick}
           >
             {buttonText}
@@ -100,7 +104,7 @@ function PageWithForm({
         <div className="page-form__auth">
           <p className="page-form__auth-text">
             {authDescription}{" "}
-            <Link to={authButtonLink} className="page-form__auth-link">
+            <Link to={authButtonLink} className="page-form__auth-link link">
               {authButtonText}
             </Link>
           </p>

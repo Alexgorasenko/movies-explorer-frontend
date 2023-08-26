@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Profile.css";
+import "../Button/Button.css";
 
 function Profile() {
   const [inputName, setInputName] = useState();
@@ -14,7 +15,8 @@ function Profile() {
     setInputEmail(e.target.value);
   }
 
-  function handleIsOneCange() {
+  function handleIsOneCange(e) {
+    e.preventDefault();
     setIsOneCange(true);
   }
 
@@ -61,15 +63,15 @@ function Profile() {
         <div className="profile__buttons">
         {!isOneCange ? (
           <>
-            <button className="profile__form-edit" onClick={handleIsOneCange}>
+            <button className="profile__form-edit button" onClick={handleIsOneCange}>
               Редактировать
             </button>
-            <button className="profile__logout">Выйти из аккаунта</button>
+            <button className="profile__logout button">Выйти из аккаунта</button>
           </>
         ) : (
           <button
             type="submit"
-            className="profile-form__submit"
+            className="profile-form__submit button"
             onClick={handleIsSave}
           >Сохранить</button>
         )}

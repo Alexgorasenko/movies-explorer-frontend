@@ -19,7 +19,6 @@
 
 .popup_opened{
   display: flex;
-
   visibility: visible;
   opacity: 1;
   transition:  0.5s;
@@ -102,4 +101,9 @@
   flex-direction: column;
   height: 100%;
   justify-content: space-between;
+}
+
+.popup__nav-link_active{
+  border-bottom: 1px solid #fff;
+  font-weight: 500;
 }

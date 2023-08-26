@@ -1,6 +1,7 @@
 import React from "react";
 import "./AboutMe.css";
 import avatar from "../../images/avatar.png";
+import "../Link/Link.css";
 
 
 function AboutMe() {
@@ -23,7 +24,7 @@ function AboutMe() {
           <a
             href="http://vodlozero.ru"
             target="_blank"
-            className="about-me__description-link"
+            className="about-me__description-link link"
             rel="noreferrer">
             Github
           </a>
