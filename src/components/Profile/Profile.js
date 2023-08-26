@@ -4,6 +4,7 @@ import "./Profile.css";
 function Profile() {
   const [inputName, setInputName] = useState();
   const [inputEmail, setInputEmail] = useState();
+  const [isOneCange, setIsOneCange] = useState(false);
 
   function handleNameOnChange(e) {
     setInputName(e.target.value);
@@ -13,8 +14,18 @@ function Profile() {
     setInputEmail(e.target.value);
   }
 
+  function handleIsOneCange() {
+    setIsOneCange(true);
+  }
+
+  function handleIsSave(e) {
+    e.preventDefault();
+    setIsOneCange(false);
+  }
+
   return (
     <section className="profile">
+
       <h3 className="profile__title">Привет, Виталий!</h3>
       <form className="profile__form">
         <div className="profile__form-input-container">
@@ -28,9 +39,9 @@ function Profile() {
             required
             placeholder="Name"
           />
-          <span className="profile__from-input-error">
+          {/* <span className="profile__from-input-error">
             Вы пропустили это поле.
-          </span>
+          </span> */}
         </div>
         <div className="profile__form-input-container">
           <label className="profile__form-input-title">E-mail</label>
@@ -43,15 +54,28 @@ function Profile() {
             required
             placeholder="E-mail"
           />
-          <span className="profile__from-input-error">
+          {/* <span className="profile__from-input-error">
             Вы пропустили это поле.
-          </span>
+          </span> */}
         </div>
-        <button className="profile__form-submit" type="submit">
-          Редактировать
-        </button>
-        <button className="profile__logout">Выйти из аккаунта</button>
+        <div className="profile__buttons">
+        {!isOneCange ? (
+          <>
+            <button className="profile__form-edit" onClick={handleIsOneCange}>
+              Редактировать
+            </button>
+            <button className="profile__logout">Выйти из аккаунта</button>
+          </>
+        ) : (
+          <button
+            type="submit"
+            className="profile-form__submit"
+            onClick={handleIsSave}
+          >Сохранить</button>
+        )}
+        </div>
       </form>
+
     </section>
   );
 }

@@ -5,8 +5,6 @@ import "./MoviesCard.css";
 import { useLocation } from "react-router-dom";
 
 
-import film_pic_3 from '../../images/film_pic_3.png'
-
 
 function MoviesCard(props) {
   const handleDeleteClick = () => {

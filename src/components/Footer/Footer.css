@@ -6,6 +6,10 @@
   margin: 80px 0 20px;
 }
 
+.footer__hidden{
+  display: none;
+}
+
 .footer__title {
   color: #8B8B8B;
   text-align: center;

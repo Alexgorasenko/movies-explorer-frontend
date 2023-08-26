@@ -12,7 +12,7 @@ function PageWithForm({
   authButtonText,
   authButtonLink,
   pageType,
-  handleOneClick
+  handleOneClick,
 }) {
   const [inputName, setInputName] = useState();
   const [inputEmail, setInputEmail] = useState();
@@ -32,79 +32,79 @@ function PageWithForm({
 
   return (
     <section className="page-form">
-      <Link to="/" className="page-form__nav-link">
-        <img src={logo} alt="Логотип сайта" className="header__logo" />
-      </Link>
-      <h3 className="page-form__header">{title}</h3>
-      <form
-        name={`form-${name}`}
-        method="post"
-        className="page-form__form"
-        id={`form-${name}`}
-        action="/"
-        onSubmit={onSubmit}
-      >
-        {pageType === "register" ? (
+      <div className="page-form__container">
+        <Link to="/" className="page-form__nav-link">
+          <img src={logo} alt="Логотип сайта" className="header__logo" />
+        </Link>
+        <h3 className="page-form__title">{title}</h3>
+        <form
+          name={`form-${name}`}
+          method="post"
+          className="page-form__form"
+          id={`form-${name}`}
+          action="/"
+          onSubmit={onSubmit}
+        >
+          {pageType === "register" ? (
+            <label className="page-form__form-label">
+              <span className="page-form__input-title">Имя</span>
+              <input
+                type="text"
+                className="page-form__input"
+                name="name"
+                placeholder="Введите имя"
+                id="name-input"
+                required
+                onChange={handleNameOnChange}
+                value={inputName || ""}
+              />
+              {/* <span className="page-form__error">Вы пропустили это поле.</span> */}
+            </label>
+          ) : null}
           <label className="page-form__form-label">
-            <span className="page-form__input-title">Имя</span>
+            <span className="page-form__input-title">E-mail</span>
             <input
-              type="text"
+              type="email"
               className="page-form__input"
-              name="name"
-              placeholder="Введите имя"
-              id="name-input"
+              name="email"
+              placeholder="Введите email"
+              id="email-input"
               required
-              onChange={handleNameOnChange}
-              value={inputName || ""}
+              onChange={handleEmailOnChange}
+              value={inputEmail || ""}
             />
-            <span className="page-form__input-error">
-              Вы пропустили это поле.
-            </span>
+            {/* <span className="page-form__error">Вы пропустили это поле.</span> */}
           </label>
-        ) : null}
-        <label className="page-form__form-label">
-          <span className="page-form__input-title">E-mail</span>
-          <input
-            type="text"
-            className="page-form__input"
-            name="email"
-            placeholder="Введите email"
-            id="email-input"
-            required
-            onChange={handleEmailOnChange}
-            value={inputEmail || ""}
-          />
-          <span className="page-form__input-error">
-            Вы пропустили это поле.
-          </span>
-        </label>
-        <label className="page-form__form-label">
-          <span className="page-form__input-title">Пароль</span>
-          <input
-            type="text"
-            className="page-form__input"
-            name="password"
-            placeholder="Введите Пароль"
-            id="password-input"
-            required
-            onChange={handlePasswordOnChange}
-            value={inputPassword || ""}
-          />
-          <span className="page-form__input-error">
-            Вы пропустили это поле.
-          </span>
-        </label>
-        <button type="submit" className="page-form__submit" onClick={handleOneClick}>
-          {buttonText}
-        </button>
-      </form>
-      <div className="page-form__auth">
-        <p className="page-form__auth-text">
-          {authDescription}{" "}
-          <Link to={authButtonLink} className="page-form__auth-link">
-            {authButtonText}
-          </Link>
-        </p>
+          <label className="page-form__form-label">
+            <span className="page-form__input-title">Пароль</span>
+            <input
+              type="password"
+              className="page-form__input page-form__input-error"
+              name="password"
+              placeholder="Введите Пароль"
+              id="password-input"
+              required
+              onChange={handlePasswordOnChange}
+              value={inputPassword || ""}
+            />
+            <span className="page-form__error">Что-то пошло не так...</span>
+          </label>
+          <button
+            type="submit"
+            className="page-form__submit"
+            onClick={handleOneClick}
+          >
+            {buttonText}
+          </button>
+        </form>
+        <div className="page-form__auth">
+          <p className="page-form__auth-text">
+            {authDescription}{" "}
+            <Link to={authButtonLink} className="page-form__auth-link">
+              {authButtonText}
+            </Link>
+          </p>
+        </div>
       </div>
     </section>
   );
