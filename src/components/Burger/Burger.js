@@ -4,10 +4,8 @@ import "./Burger.css";
 function Burger(props) {
   return (
     <>
-      <button className="burger" onClick={props.handleOneClick}>
-        <div className="burger__line"></div>
-        <div className="burger__line"></div>
-        <div className="burger__line"></div>
+      <button className={`burger ${props.isBurgerOpen ? ('burger_active') :('')}`} onClick={props.handleOneClick}>
+        <span></span>
       </button>
     </>
   );

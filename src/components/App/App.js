@@ -1,4 +1,6 @@
 import logo from "../../logo.svg";
+import React, { useEffect, useState } from "react";
+
 import "./App.css";
 import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
 import Header from "../Header/Header";
@@ -12,9 +14,18 @@ import Footer from "../Footer/Footer";
 import PageNotFound from "../PageNotFound/PageNotFound";
 
 function App() {
+  const [isBurgerOpen, setBurgerOpen] = useState(false);
+
+  const handleOneClick = () => {
+    if (isBurgerOpen) {
+      setBurgerOpen(false);
+    } else {
+      setBurgerOpen(true);
+    }
+  };
   return (
-    <div className="App">
-      <Header />
+    <div className='app'>
+      <Header handleOneClick={handleOneClick} isBurgerOpen={isBurgerOpen} />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/movies" element={<Movies />} />

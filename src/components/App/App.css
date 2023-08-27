@@ -1,6 +1,6 @@
 @import url(../../vendor/fonts.css);
 
-.App{
+.app{
   background-color: #202020;
   display: flex;
   flex-direction: column;
@@ -8,12 +8,4 @@
   min-height: 100vh;
   height: 100%;
   position: relative;
-}
-
-@media screen and (max-width: 1024px){
-
-}
-
-@media screen and (max-width: 600px){
-
 }

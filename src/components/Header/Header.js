@@ -3,21 +3,10 @@ import logo from "../../images/logo.svg";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import Navigation from "../Navigation/Navigation";
-import Burger from "../Burger/Burger";
 import Popup from "../Popup/Popup";
 import "../Button/Button.css";
 
-
-function Header() {
-  const [isPopupOpen, setPopupOpen] = useState(false);
-
-  const handleOneClick = () => {
-    setPopupOpen(true);
-  };
-
-  const closePopup = () => {
-    setPopupOpen(false);
-  };
+function Header(props) {
 
 
   // const islogin = false;
@@ -29,10 +18,7 @@ function Header() {
         <img src={logo} alt="Логотип сайта" className="header__logo" />
       </Link>
       {islogin ? (
-        <>
-        <Navigation></Navigation>
-        <Burger handleOneClick={handleOneClick}></Burger>
-        </>
+        <Navigation handleOneClick={props.handleOneClick} isBurgerOpen={props.isBurgerOpen}></Navigation>
       ) : (
         <nav className="header__nav-menu">
           <ul className="header__nav-link-login-list">
@@ -50,8 +36,7 @@ function Header() {
         </nav>
       )}
 
-
-      <Popup isPopupOpen={isPopupOpen} onClose={closePopup}></Popup>
+      <Popup isBurgerOpen={props.isBurgerOpen}></Popup>
     </header>
   );
 }

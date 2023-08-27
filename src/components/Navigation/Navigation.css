@@ -1,5 +1,3 @@
-
-
 .navigation__nav-link-profile {
   width: 100px;
   height: 32px;
@@ -36,7 +34,7 @@
   padding-left: 60px;
 }
 
-.navigation__nav-link_active{
+.navigation__nav-link_active {
   font-weight: 500;
 }
 
@@ -46,7 +44,6 @@
   margin: 0;
   width: 100%;
   justify-content: center;
-
 }
 
 .navigation__nav-menu {
@@ -61,7 +58,51 @@
 
 @media screen and (max-width: 1024px) {
   .navigation__nav-menu {
-    display: none;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease 0s;
+    z-index: 90;
+    flex-direction: column;
+    background-color: #202020;
+    max-width: 520px;
+    align-items: center;
+    padding: 160px 0 90px;
+
+  }
+
+  .navigation__nav-menu_active{
+    right:0
+  }
+
+  .navigation__nav-link-list{
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+  }
+
+  .navigation__nav-link{
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.22;
+    padding-bottom: 4px;
+  }
+
+  .navigation__nav-link_active{
+
+    border-bottom: 2px solid #fff;
+  }
+
+  .navigation__nav-link-item, .navigation__nav-link-item:first-of-type{
+    padding-left: 0;
+    margin-bottom: 28px;
+  }
+  .navigation__nav-link-item:last-of-type{
+    margin-bottom: 0px;
   }
 }
 
