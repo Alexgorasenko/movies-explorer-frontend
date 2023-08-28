@@ -10,7 +10,7 @@ function Portfolio() {
       <ul className="portfolio__list">
         <li className="portfolio__item button">
           <a
-            href="http://vodlozero.ru"
+            href="https://alexgorasenko.github.io/how-to-learn/"
             target="_blank"
             className="portfolio__link"
             rel="noreferrer"
@@ -25,7 +25,7 @@ function Portfolio() {
         </li>
         <li className="portfolio__item button">
           <a
-            href="http://vodlozero.ru"
+            href="https://alexgorasenko.github.io/russian-travel/"
             target="_blank"
             className="portfolio__link"
             rel="noreferrer"
@@ -40,7 +40,7 @@ function Portfolio() {
         </li>
         <li className="portfolio__item button">
           <a
-            href="http://vodlozero.ru"
+            href="https://alex-gorasenko.mesto.nomoredomains.xyz"
             target="_blank"
             className="portfolio__link"
             rel="noreferrer"

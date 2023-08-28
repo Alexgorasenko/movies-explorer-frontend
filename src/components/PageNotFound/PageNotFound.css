@@ -48,16 +48,18 @@
 }
 
 
+@media screen and (max-width: 1024px) {
+  .page-not-found {
+    justify-content: center;
+}
+}
+
 @media screen and (max-width: 600px) {
   .page-not-found__button {
     margin: 0;
     position: absolute;
     bottom: 30px;
     width: 100%;
-  }
-
-  .page-not-found {
-    justify-content: center;
   }
 
   .page-not-found__tile {

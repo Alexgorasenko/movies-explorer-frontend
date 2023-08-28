@@ -123,6 +123,11 @@
   line-height: normal;
 }
 
+.profile-form__submit:disabled {
+  background: #F8F8F8;
+  color: #C2C2C2;
+}
+
 .profile-form__submit-error {
   position: absolute;
   color: #FF004C;

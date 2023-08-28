@@ -47,50 +47,52 @@ function PageWithForm({
           action="/"
           onSubmit={onSubmit}
         >
-          {pageType === "register" ? (
+          <div className="page-form__inputs">
+            {pageType === "register" ? (
+              <label className="page-form__form-label">
+                <span className="page-form__input-title">Имя</span>
+                <input
+                  type="text"
+                  className="page-form__input"
+                  name="name"
+                  placeholder="Введите имя"
+                  id="name-input"
+                  required
+                  onChange={handleNameOnChange}
+                  value={inputName || ""}
+                />
+                {/* <span className="page-form__error">Вы пропустили это поле.</span> */}
+              </label>
+            ) : null}
             <label className="page-form__form-label">
-              <span className="page-form__input-title">Имя</span>
+              <span className="page-form__input-title">E-mail</span>
               <input
-                type="text"
+                type="email"
                 className="page-form__input"
-                name="name"
-                placeholder="Введите имя"
-                id="name-input"
+                name="email"
+                placeholder="Введите email"
+                id="email-input"
                 required
-                onChange={handleNameOnChange}
-                value={inputName || ""}
+                onChange={handleEmailOnChange}
+                value={inputEmail || ""}
               />
               {/* <span className="page-form__error">Вы пропустили это поле.</span> */}
             </label>
-          ) : null}
-          <label className="page-form__form-label">
-            <span className="page-form__input-title">E-mail</span>
-            <input
-              type="email"
-              className="page-form__input"
-              name="email"
-              placeholder="Введите email"
-              id="email-input"
-              required
-              onChange={handleEmailOnChange}
-              value={inputEmail || ""}
-            />
-            {/* <span className="page-form__error">Вы пропустили это поле.</span> */}
-          </label>
-          <label className="page-form__form-label">
-            <span className="page-form__input-title">Пароль</span>
-            <input
-              type="password"
-              className="page-form__input page-form__input-error"
-              name="password"
-              placeholder="Введите Пароль"
-              id="password-input"
-              required
-              onChange={handlePasswordOnChange}
-              value={inputPassword || ""}
-            />
-            <span className="page-form__error">Что-то пошло не так...</span>
-          </label>
+            <label className="page-form__form-label">
+              <span className="page-form__input-title">Пароль</span>
+              <input
+                type="password"
+                className="page-form__input page-form__input-error"
+                name="password"
+                placeholder="Введите Пароль"
+                id="password-input"
+                required
+                onChange={handlePasswordOnChange}
+                value={inputPassword || ""}
+              />
+              <span className="page-form__error">Что-то пошло не так...</span>
+            </label>
+          </div>
           <div className="page-form__submit-container">
             <button
               type="submit"

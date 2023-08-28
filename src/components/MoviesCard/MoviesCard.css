@@ -91,11 +91,11 @@
 }
 
 .movie-card__delete-from-movie {
-  background-image: url(../../images/save.png);
+  background-image: url(../../images/save.svg);
 }
 
 .movie-card__delete-from-saved-movie {
-  background-image: url(../../images/delete.png);
+  background-image: url(../../images/delete.svg);
   opacity: 0;
   transition: opacity 0.1s linear 0.1s;
 }

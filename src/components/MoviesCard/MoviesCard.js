@@ -1,5 +1,4 @@
 import React from "react";
-import save from "../../images/save.png";
 import "./MoviesCard.css";
 import { useLocation } from "react-router-dom";
 
@@ -20,8 +19,6 @@ function MoviesCard(props) {
         />
         {props.movie.savedFavorite ? (
           <button
-            src={save}
-            alt="Кнопка сохранения"
             className={
               location.pathname === "/saved-movies"
                 ? "movie-card__delete movie-card__favorite-position  movie-card__delete-from-saved-movie"
