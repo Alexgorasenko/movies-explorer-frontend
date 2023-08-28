@@ -145,8 +145,6 @@
   .about-project {
     width: calc(100% - 18px * 2);
     margin-top: 70px;
-
-
   }
 
   .about-project__description-first-column {
@@ -164,8 +162,6 @@
     flex-direction: column;
     margin-bottom: 60px;
     margin-top: 60px;
-
-
   }
 
   .about-project__description-title {

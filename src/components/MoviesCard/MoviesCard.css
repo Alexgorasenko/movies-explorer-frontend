@@ -5,8 +5,6 @@
   align-items: center;
 }
 
-
-
 .movie-card__image {
   width: 100%;
   height: 100%;
@@ -102,23 +100,19 @@
   transition: opacity 0.1s linear 0.1s;
 }
 
-
-
 .movie-card:hover .movie-card__delete-from-saved-movie {
   opacity: 1;
   cursor: pointer;
 }
 
-.movie-card:hover .movie-card__favorite{
+.movie-card:hover .movie-card__favorite {
   opacity: 1;
   cursor: pointer;
-
 }
 
-.movie-card:hover{
+.movie-card:hover {
   cursor: pointer;
 }
-
 
 @media screen and (max-width: 1024px) {
   .movie-card__description {
@@ -126,14 +120,13 @@
     max-width: none;
   }
 
-  .movie-card__favorite{
+  .movie-card__favorite {
     opacity: 1;
   }
 
-  .movie-card__delete-from-saved-movie{
+  .movie-card__delete-from-saved-movie {
     opacity: 1;
   }
-
 
   .movie-card__title {
     text-overflow: ellipsis;

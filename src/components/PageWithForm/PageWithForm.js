@@ -5,8 +5,6 @@ import "./PageWithForm.css";
 import "../Button/Button.css";
 import "../Link/Link.css";
 
-
-
 function PageWithForm({
   title,
   name,
@@ -93,13 +91,18 @@ function PageWithForm({
             />
             <span className="page-form__error">Что-то пошло не так...</span>
           </label>
-          <button
-            type="submit"
-            className="page-form__submit button"
-            onClick={handleOneClick}
-          >
-            {buttonText}
-          </button>
+          <div className="page-form__submit-container">
+            <button
+              type="submit"
+              className="page-form__submit button"
+              onClick={handleOneClick}
+            >
+              {buttonText}
+            </button>
+            <span className="page-form__submit-error">
+              При обновлении профиля произошла ошибка.
+            </span>
+          </div>
         </form>
         <div className="page-form__auth">
           <p className="page-form__auth-text">

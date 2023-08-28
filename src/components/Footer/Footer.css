@@ -6,7 +6,7 @@
   margin: 80px 0 20px;
 }
 
-.footer__hidden{
+.footer__hidden {
   display: none;
 }
 
@@ -49,7 +49,6 @@
   font-weight: 400;
   text-decoration: none;
   line-height: normal;
-
 }
 
 
@@ -74,7 +73,6 @@
 @media screen and (max-width: 1024px) {
   .footer {
     width: calc(100% - 30px * 2);
-
   }
 }
 

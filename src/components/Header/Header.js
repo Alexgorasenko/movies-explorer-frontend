@@ -3,12 +3,9 @@ import logo from "../../images/logo.svg";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import Navigation from "../Navigation/Navigation";
-import Popup from "../Popup/Popup";
 import "../Button/Button.css";
 
 function Header(props) {
-
-
   // const islogin = false;
   const islogin = true;
 
@@ -18,7 +15,7 @@ function Header(props) {
         <img src={logo} alt="Логотип сайта" className="header__logo" />
       </Link>
       {islogin ? (
-        <Navigation handleOneClick={props.handleOneClick} isBurgerOpen={props.isBurgerOpen}></Navigation>
+        <Navigation></Navigation>
       ) : (
         <nav className="header__nav-menu">
           <ul className="header__nav-link-login-list">
@@ -35,8 +32,6 @@ function Header(props) {
           </ul>
         </nav>
       )}
-
-      <Popup isBurgerOpen={props.isBurgerOpen}></Popup>
     </header>
   );
 }

@@ -3,7 +3,6 @@ import "./AboutMe.css";
 import avatar from "../../images/avatar.png";
 import "../Link/Link.css";
 
-
 function AboutMe() {
   return (
     <section className="about-me" id="about-me">
@@ -25,7 +24,8 @@ function AboutMe() {
             href="http://vodlozero.ru"
             target="_blank"
             className="about-me__description-link link"
-            rel="noreferrer">
+            rel="noreferrer"
+          >
             Github
           </a>
         </div>

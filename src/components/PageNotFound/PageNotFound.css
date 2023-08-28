@@ -8,7 +8,6 @@
   height: 100%;
   background-color: #202020;
   overflow: auto;
-
 }
 
 .page-not-found__tile {
@@ -33,7 +32,6 @@
   line-height: normal;
   margin: 0;
   margin-top: 5px;
-
 }
 
 .page-not-found__button {
@@ -50,18 +48,17 @@
 }
 
 
-@media screen and (max-width: 600px){
-  .page-not-found__button{
+@media screen and (max-width: 600px) {
+  .page-not-found__button {
     margin: 0;
     position: absolute;
     bottom: 30px;
     width: 100%;
   }
 
-.page-not-found {
-  justify-content: center;
-
-}
+  .page-not-found {
+    justify-content: center;
+  }
 
   .page-not-found__tile {
     font-size: 80px;

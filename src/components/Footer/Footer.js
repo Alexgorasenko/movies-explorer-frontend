@@ -3,18 +3,14 @@ import "./Footer.css";
 import { useLocation } from "react-router-dom";
 import "../Link/Link.css";
 
-
-
 function Footer() {
-
   const location = useLocation();
 
   return (
-    <footer  className={
-      location.pathname === "/profile"
-        ? "footer__hidden "
-        : "footer"
-    }>
+    <footer
+      className={
+        location.pathname === "/profile" ? "footer__hidden " : "footer"
+      }>
       <h3 className="footer__title">
         Учебный проект Яндекс.Практикум х BeatFilm.
       </h3>

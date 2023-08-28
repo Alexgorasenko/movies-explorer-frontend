@@ -48,7 +48,6 @@
   font-weight: 500;
   line-height: 1.11;
   margin-bottom: 26px;
-
 }
 
 .about-me__description-text {
@@ -61,7 +60,6 @@
   line-height: 1.57;
   margin-bottom: 98px;
   max-width: 600px;
-
 }
 
 .about-me__description-link {
@@ -125,7 +123,6 @@
     font-size: 18px;
     letter-spacing: -0.72px;
     padding-bottom: 28px;
-
   }
 
   .about-me__description-title {
@@ -138,14 +135,12 @@
     font-size: 11px;
     line-height: 1.45;
     max-width: 292px;
-
   }
 
   .about-me__description-text {
     font-size: 11px;
     line-height: 1.45;
     margin-bottom: 36px;
-
   }
 
   .about-me__information {

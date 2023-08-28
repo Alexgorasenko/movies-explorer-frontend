@@ -3,10 +3,7 @@ import savedMovies from "../../utils/SavedMovies";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Preloader from "../Preloader/Preloader";
 import SearchForm from "../SearchForm/SearchForm";
-import "./SavedMovies.css"
-
-
-
+import "./SavedMovies.css";
 
 function SavedMovies() {
   return (

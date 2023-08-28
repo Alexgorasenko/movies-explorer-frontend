@@ -1,10 +1,7 @@
 import React from "react";
-import avatar from "../../images/avatar.png";
 import save from "../../images/save.png";
 import "./MoviesCard.css";
 import { useLocation } from "react-router-dom";
-
-
 
 function MoviesCard(props) {
   const handleDeleteClick = () => {

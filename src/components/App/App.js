@@ -14,18 +14,9 @@ import Footer from "../Footer/Footer";
 import PageNotFound from "../PageNotFound/PageNotFound";
 
 function App() {
-  const [isBurgerOpen, setBurgerOpen] = useState(false);
-
-  const handleOneClick = () => {
-    if (isBurgerOpen) {
-      setBurgerOpen(false);
-    } else {
-      setBurgerOpen(true);
-    }
-  };
   return (
-    <div className='app'>
-      <Header handleOneClick={handleOneClick} isBurgerOpen={isBurgerOpen} />
+    <div className="app">
+      <Header />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/movies" element={<Movies />} />

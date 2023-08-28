@@ -3,11 +3,9 @@ import movies from "../../utils/Movies";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Preloader from "../Preloader/Preloader";
 import SearchForm from "../SearchForm/SearchForm";
-import "./Movies.css"
+import "./Movies.css";
 
 function Movies() {
-
-
   return (
     <section className="movies">
       <SearchForm></SearchForm>
@@ -18,3 +16,4 @@ function Movies() {
 }
 
 export default Movies;
+

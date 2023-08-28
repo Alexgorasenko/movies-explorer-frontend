@@ -27,7 +27,6 @@ function Profile() {
 
   return (
     <section className="profile">
-
       <h3 className="profile__title">Привет, Виталий!</h3>
       <form className="profile__form">
         <div className="profile__form-input-container">
@@ -61,23 +60,34 @@ function Profile() {
           </span> */}
         </div>
         <div className="profile__buttons">
-        {!isOneCange ? (
-          <>
-            <button className="profile__form-edit button" onClick={handleIsOneCange}>
-              Редактировать
-            </button>
-            <button className="profile__logout button">Выйти из аккаунта</button>
-          </>
-        ) : (
-          <button
-            type="submit"
-            className="profile-form__submit button"
-            onClick={handleIsSave}
-          >Сохранить</button>
-        )}
+          {!isOneCange ? (
+            <>
+              <button
+                className="profile__form-edit button"
+                onClick={handleIsOneCange}
+              >
+                Редактировать
+              </button>
+              <button className="profile__logout button">
+                Выйти из аккаунта
+              </button>
+            </>
+          ) : (
+            <div className="profile-form__submit-container">
+              <button
+                type="submit"
+                className="profile-form__submit button"
+                onClick={handleIsSave}
+              >
+                Сохранить
+              </button>
+              <span className="profile-form__submit-error">
+                При обновлении профиля произошла ошибка.
+              </span>
+            </div>
+          )}
         </div>
       </form>
-
     </section>
   );
 }

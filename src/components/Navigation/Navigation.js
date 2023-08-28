@@ -5,23 +5,38 @@ import "../Button/Button.css";
 import "../Link/Link.css";
 import { useLocation } from "react-router-dom";
 import Burger from "../Burger/Burger";
+import Popup from "../Popup/Popup";
 
-function Navigation(props) {
+function Navigation() {
   const location = useLocation();
+
+  const [isBurgerOpen, setBurgerOpen] = useState(false);
+
+  const handleBurgerOneClick = () => {
+    if (isBurgerOpen) {
+      setBurgerOpen(false);
+    } else {
+      setBurgerOpen(true);
+    }
+  };
+
+  const handleNavLinkClick = () => {
+    setBurgerOpen(false);
+  };
 
   return (
     <>
       <Burger
-        handleOneClick={props.handleOneClick}
-        isBurgerOpen={props.isBurgerOpen}
+        handleOneClick={handleBurgerOneClick}
+        isBurgerOpen={isBurgerOpen}
       ></Burger>
       <nav
         className={`navigation__nav-menu ${
-          props.isBurgerOpen ? "navigation__nav-menu_active" : ""
+          isBurgerOpen ? "navigation__nav-menu_active" : ""
         }`}
       >
         <ul className="navigation__nav-link-list">
-          {props.isBurgerOpen ? (
+          {isBurgerOpen ? (
             <li className="navigation__nav-link-item">
               <Link
                 to="/"
@@ -30,7 +45,7 @@ function Navigation(props) {
                     ? "navigation__nav-link navigation__nav-link_active link"
                     : "navigation__nav-link link"
                 }
-                onClick={props.handleOneClick}
+                onClick={handleNavLinkClick}
               >
                 Главная
               </Link>
@@ -46,7 +61,7 @@ function Navigation(props) {
                   ? "navigation__nav-link navigation__nav-link_active link"
                   : "navigation__nav-link link"
               }
-              onClick={props.handleOneClick}
+              onClick={handleNavLinkClick}
             >
               Фильмы
             </Link>
@@ -59,7 +74,7 @@ function Navigation(props) {
                   ? "navigation__nav-link navigation__nav-link_active link"
                   : "navigation__nav-link link"
               }
-              onClick={props.handleOneClick}
+              onClick={handleNavLinkClick}
             >
               Сохранённые фильмы
             </Link>
@@ -71,6 +86,7 @@ function Navigation(props) {
           </button>
         </Link>
       </nav>
+      <Popup isBurgerOpen={isBurgerOpen}></Popup>
     </>
   );
 }

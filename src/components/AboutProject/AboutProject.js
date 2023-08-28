@@ -31,7 +31,9 @@ function AboutProject() {
           <span className="about-project__timeline-description">Back-end</span>
         </div>
         <div className="about-project__timeline-frontend">
-          <span className="about-project__timeline-frontend_text">4 недели</span>
+          <span className="about-project__timeline-frontend_text">
+            4 недели
+          </span>
           <span className="about-project__timeline-description">Front-end</span>
         </div>
       </div>
