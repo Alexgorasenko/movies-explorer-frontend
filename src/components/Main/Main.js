@@ -9,7 +9,7 @@ import "./Main.css";
 
 function Main() {
   return (
-    <main className="content">
+    <main className="main">
       <Promo></Promo>
       <AboutProject></AboutProject>
       <Techs></Techs>

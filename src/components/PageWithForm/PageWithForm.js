@@ -59,6 +59,8 @@ function PageWithForm({
                   id="name-input"
                   required
                   onChange={handleNameOnChange}
+                  minLength={2}
+                  maxLength={30}
                   value={inputName || ""}
                 />
                 {/* <span className="page-form__error">Вы пропустили это поле.</span> */}
@@ -88,6 +90,7 @@ function PageWithForm({
                 id="password-input"
                 required
                 onChange={handlePasswordOnChange}
+                minLength={2}
                 value={inputPassword || ""}
               />
               <span className="page-form__error">Что-то пошло не так...</span>

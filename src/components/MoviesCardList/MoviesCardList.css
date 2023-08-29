@@ -43,7 +43,7 @@
 
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 650px) {
   .movies-cards__list {
     grid-template-columns: 1fr;
     width: calc(100% - 10px * 2);

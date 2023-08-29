@@ -45,7 +45,7 @@ input:checked+.filter-checkbox__slider:before {
   transform: translateX(22px);
 }
 
-.filter-checkbox__container {
+.filter-checkbox {
   display: flex;
   align-items: center;
 }

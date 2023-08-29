@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Profile.css";
 import "../Button/Button.css";
+import { Link } from "react-router-dom";
 
 function Profile() {
   const [inputName, setInputName] = useState();
@@ -68,9 +69,11 @@ function Profile() {
               >
                 Редактировать
               </button>
-              <button className="profile__logout button">
-                Выйти из аккаунта
-              </button>
+              <Link to="/">
+                <button className="profile__logout button">
+                  Выйти из аккаунта
+                </button>
+              </Link>
             </>
           ) : (
             <div className="profile-form__submit-container">
