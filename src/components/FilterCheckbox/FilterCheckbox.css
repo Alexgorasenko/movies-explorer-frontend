@@ -53,7 +53,7 @@ input:checked+.filter-checkbox__slider:before {
 .filter-checkbox__description {
   margin: 0;
   color: #FFF;
-  font-family: Inter;
+  font-family: "Inter", sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
