@@ -70,7 +70,7 @@
   width: 80%;
 }
 
-.about-project__timeline-backend_text {
+.about-project__timeline-backend-text {
   background-color: #3DDC84;
   width: 100%;
   text-align: center;
@@ -86,7 +86,7 @@
   margin-bottom: 14px;
 }
 
-.about-project__timeline-frontend_text {
+.about-project__timeline-frontend-text {
   padding-top: 9px;
   padding-bottom: 9px;
   width: 100%;
@@ -175,7 +175,7 @@
     line-height: 1.45;
   }
 
-  .about-project__timeline-backend_text {
+  .about-project__timeline-backend-text {
     font-size: 11px;
     margin-bottom: 10px;
     padding-top: 11px;
@@ -183,7 +183,7 @@
     line-height: 1.18;
   }
 
-  .about-project__timeline-frontend_text {
+  .about-project__timeline-frontend-text {
     font-size: 11px;
     margin-bottom: 10px;
     padding-top: 11px;

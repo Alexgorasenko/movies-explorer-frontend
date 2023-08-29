@@ -36,7 +36,7 @@ function PageWithForm({
     <section className="page-form">
       <div className="page-form__container">
         <Link to="/" className="page-form__nav-link button">
-          <img src={logo} alt="Логотип сайта" className="header__logo" />
+          <img src={logo} alt="Логотип сайта" className="page-form__logo" />
         </Link>
         <h3 className="page-form__title">{title}</h3>
         <form

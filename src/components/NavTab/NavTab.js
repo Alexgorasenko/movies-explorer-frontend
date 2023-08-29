@@ -5,7 +5,7 @@ import "../Button/Button.css";
 
 function NavTab() {
   return (
-    <nav className="nav-tab__menu">
+    <nav className="nav-tab">
       <ul className="nav-tab__list">
         <li className="nav-tab__item">
           <Link to="#about-project" className="nav-tab__link button" smooth>
