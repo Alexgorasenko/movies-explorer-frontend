@@ -1,0 +1,170 @@
+.techs {
+  width: 100%;
+  background-color: #272727;
+  margin-top: 110px;
+  max-width: 1280px;
+}
+
+.techs__title {
+  margin: 100px 70px 0 70px;
+  color: #FFF;
+  font-family: "Inter", sans-serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
+  border-bottom: 1px solid #DADADA;
+  padding-bottom: 23px;
+}
+
+.techs__description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 90px;
+}
+
+.techs__description-title {
+  margin: 0;
+  margin-bottom: 26px;
+  color: #FFF;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.16;
+  letter-spacing: -2px;
+}
+
+.techs__description-subtitle {
+  margin: 0;
+  color: #FFF;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.42;
+  letter-spacing: -0.56px;
+  max-width: 460px;
+}
+
+.techs__list {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  margin: 100px 0;
+}
+
+.techs__item {
+  list-style-type: none;
+  border-radius: 10px;
+  background-color: #303030;
+  width: 90px;
+  height: 60px;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.techs__item:last-child {
+  margin-right: 0;
+}
+
+.techs__item-name {
+  color: #FFF;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.56px;
+}
+
+
+@media screen and (max-width: 1024px) {
+  .techs__description-subtitle {
+    font-size: 12px;
+    line-height: 1.5;
+    letter-spacing: -0.48px;
+  }
+
+  .techs__description {
+    margin-top: 80px;
+  }
+
+  .techs {
+    margin-top: 90px;
+  }
+
+  .techs__item {
+    width: 84px;
+    height: 57px;
+  }
+
+  .techs__item-name {
+    font-size: 12px;
+    letter-spacing: -0.48px;
+  }
+
+  .techs__title {
+    margin: 90px 50px 0 50px;
+  }
+
+  .techs__description-title {
+    margin-bottom: 22px;
+  }
+
+  .techs__list {
+    margin-top: 83px;
+    margin-bottom: 90px
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .techs {
+    background-color: transparent;
+    margin-top: 140px;
+  }
+
+  .techs__title {
+    border-bottom: 1px solid #000;
+  }
+
+  .techs__description {
+    margin-top: 60px;
+  }
+
+  .techs__description-title {
+    font-size: 30px;
+    letter-spacing: -1.2px;
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+
+  .techs__description-subtitle {
+    font-size: 11px;
+    line-height: 1.45;
+    letter-spacing: -0.44px;
+    max-width: 292px;
+  }
+
+  .techs__list {
+    display: grid;
+    grid-template-columns: 84px 84px;
+    gap: 10px;
+    margin-top: 50px;
+    margin-bottom: 70px
+  }
+
+  .techs__title {
+    margin: 0 18px 0 18px;
+    font-size: 18px;
+    line-height: 1.22;
+    padding-bottom: 30px;
+  }
+}

@@ -1,0 +1,17 @@
+@import url(../../vendor/fonts.css);
+
+.app {
+  background-color: #202020;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  height: 100%;
+  position: relative;
+}
+
+.content{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
