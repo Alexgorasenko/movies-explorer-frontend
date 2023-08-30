@@ -9,28 +9,29 @@ function PageWithForm({
   title,
   name,
   buttonText,
-  onSubmit,
   authDescription,
   authButtonText,
   authButtonLink,
   pageType,
-  handleOneClick,
+  handleOneChange,
+  onSubmit,
+  formValue
 }) {
-  const [inputName, setInputName] = useState();
-  const [inputEmail, setInputEmail] = useState();
-  const [inputPassword, setInputPassword] = useState();
+  // const [inputName, setInputName] = useState();
+  // const [inputEmail, setInputEmail] = useState();
+  // const [inputPassword, setInputPassword] = useState();
 
-  function handleNameOnChange(e) {
-    setInputName(e.target.value);
-  }
+  // function handleNameOnChange(e) {
+  //   setInputName(e.target.value);
+  // }
 
-  function handleEmailOnChange(e) {
-    setInputEmail(e.target.value);
-  }
+  // function handleEmailOnChange(e) {
+  //   setInputEmail(e.target.value);
+  // }
 
-  function handlePasswordOnChange(e) {
-    setInputPassword(e.target.value);
-  }
+  // function handlePasswordOnChange(e) {
+  //   setInputPassword(e.target.value);
+  // }
 
   return (
     <section className="page-form">
@@ -58,10 +59,10 @@ function PageWithForm({
                   placeholder="Введите имя"
                   id="name-input"
                   required
-                  onChange={handleNameOnChange}
+                  onChange={handleOneChange}
                   minLength={2}
                   maxLength={30}
-                  value={inputName || ""}
+                  value={formValue.name || ""}
                 />
                 {/* <span className="page-form__error">Вы пропустили это поле.</span> */}
               </label>
@@ -75,8 +76,8 @@ function PageWithForm({
                 placeholder="Введите email"
                 id="email-input"
                 required
-                onChange={handleEmailOnChange}
-                value={inputEmail || ""}
+                onChange={handleOneChange}
+                value={formValue.email || ""}
               />
               {/* <span className="page-form__error">Вы пропустили это поле.</span> */}
             </label>
@@ -89,9 +90,9 @@ function PageWithForm({
                 placeholder="Введите Пароль"
                 id="password-input"
                 required
-                onChange={handlePasswordOnChange}
+                onChange={handleOneChange}
                 minLength={2}
-                value={inputPassword || ""}
+                value={formValue.password || ""}
               />
               <span className="page-form__error">Что-то пошло не так...</span>
             </label>
@@ -100,7 +101,6 @@ function PageWithForm({
             <button
               type="submit"
               className="page-form__submit button"
-              onClick={handleOneClick}
             >
               {buttonText}
             </button>
