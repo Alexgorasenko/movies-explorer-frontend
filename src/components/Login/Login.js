@@ -1,26 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PageWithForm from "../PageWithForm/PageWithForm";
 
-function Login({handleAuthorize}) {
-  const [formValue, setFormValue] = useState({
-    email: "",
-    password: "",
-  });
-
-  const handleOneChange = (e) => {
-    const { name, value } = e.target;
-    setFormValue({
-      ...formValue,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    handleAuthorize(formValue);
-  };
-
-
+function Login({handleAuthorize, isSuccess}) {
   return (
     <PageWithForm
       name="login"
@@ -30,9 +11,8 @@ function Login({handleAuthorize}) {
       authButtonText="Регистрация"
       authButtonLink="/signup"
       pageType="login"
-      onSubmit={handleSubmit}
-      handleOneChange={handleOneChange}
-      formValue={formValue}
+      onSubmit={handleAuthorize}
+      isSuccess={isSuccess}
     ></PageWithForm>
   );
 }

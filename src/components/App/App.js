@@ -19,6 +19,34 @@ function App() {
   const navigate = useNavigate();
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setСurrentUser] = useState({});
+  const [isSuccess, setIsSuccess] = useState({
+    success: true,
+    msg: "",
+    open: false,
+  });
+
+  const token = localStorage.getItem("jwt");
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsSuccess({
+        open: false,
+      });
+    }, 3000);
+  }, [isSuccess.open]);
+
+  useEffect(() => {
+    if (token) {
+      MainApi.getUserInfo()
+        .then((data) => {
+          setСurrentUser(data);
+          setLoggedIn(true);
+        })
+        .catch((err) => {
+          console.log(`Ошибка сервера ${err}`);
+        });
+    }
+  }, []);
 
   const signOut = () => {
     localStorage.removeItem("jwt");
@@ -35,10 +63,11 @@ function App() {
       .then((data) => {
         if (data._id) {
           handleAuthorize({ password, email });
+          setIsSuccess({ success: true, msg: "" });
         }
       })
       .catch((err) => {
-        console.log(`Ошибка сервера ${err}`);
+        setIsSuccess({ success: false, msg: err });
       });
   };
 
@@ -48,20 +77,22 @@ function App() {
         localStorage.setItem("jwt", data.token);
         navigate("/movies");
         handleLogin();
+        setIsSuccess({ success: true, msg: "" });
       })
-
       .catch((err) => {
-        console.log(`Ошибка сервера ${err}`);
+        setIsSuccess({ success: false, msg: err });
       });
   };
 
   const handleUpdateUser = ({ email, name }) => {
     MainApi.patchUserInfo({ email, name })
       .then((data) => {
-        console.log(data);
+        setСurrentUser(data);
+        setIsSuccess({ success: true, msg: "", open: true });
       })
       .catch((err) => {
         console.log(`Ошибка сервера ${err}`);
+        setIsSuccess({ success: false, msg: err });
       });
   };
 
@@ -71,10 +102,7 @@ function App() {
         <Header loggedIn={loggedIn} />
         <main className="content">
           <Routes>
-            <Route
-              path="/"
-              element={<Main></Main>}
-            />
+            <Route path="/" element={<Main></Main>} />
             <Route
               path="/movies"
               element={<ProtectedRoute element={Movies} loggedIn={loggedIn} />}
@@ -93,16 +121,27 @@ function App() {
                   signOut={signOut}
                   handleUpdateUser={handleUpdateUser}
                   loggedIn={loggedIn}
+                  isSuccess={isSuccess}
                 />
               }
             />
             <Route
               path="/signin"
-              element={<Login handleAuthorize={handleAuthorize} />}
+              element={
+                <Login
+                  handleAuthorize={handleAuthorize}
+                  isSuccess={isSuccess}
+                />
+              }
             />
             <Route
               path="/signup"
-              element={<Register handleRegister={handleRegister} />}
+              element={
+                <Register
+                  handleRegister={handleRegister}
+                  isSuccess={isSuccess}
+                />
+              }
             />
             <Route path="/*" element={<PageNotFound />} />
           </Routes>

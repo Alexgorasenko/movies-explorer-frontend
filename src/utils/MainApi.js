@@ -4,9 +4,13 @@ export const BASE_URL = "https://api.alex-gorasenko.movies.nomoreparties.co";
 const checkResponse = (res) => {
   if (res.ok) {
     return res.json();
-  }
-  return Promise.reject("Error");
-};
+  } else {
+    return res.json().then((err) => {
+      return Promise.reject(`${err.message}`);
+    })
+}};
+
+
 
 export const register = (name, password, email) => {
   return fetch(`${BASE_URL}/signup`, {
@@ -37,5 +41,15 @@ export const patchUserInfo = ({ email, name }) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, name }),
+  }).then(checkResponse);
+}
+
+export const getUserInfo = () => {
+  return fetch(`${BASE_URL}/users/me`, {
+    method: "GET",
+    headers: {
+      authorization: `Bearer ${localStorage.getItem('jwt')}`,
+      "Content-Type": "application/json",
+    }
   }).then(checkResponse);
 }
