@@ -3,10 +3,10 @@ import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import "./SearchForm.css";
 import "../Button/Button.css";
 
-function SearchForm() {
+function SearchForm({handeOneSubmit}) {
   return (
     <article className="search-form">
-      <form className="search-form__form">
+      <form className="search-form__form" onSubmit={handeOneSubmit}>
         <div className="search-form__container">
           <input className="search-form__input" placeholder="Фильм"></input>
           <button className="search-form__submit button"></button>

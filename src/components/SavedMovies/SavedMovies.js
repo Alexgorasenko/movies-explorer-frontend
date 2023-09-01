@@ -1,11 +1,10 @@
 import React from "react";
-import savedMovies from "../../utils/SavedMovies";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Preloader from "../Preloader/Preloader";
 import SearchForm from "../SearchForm/SearchForm";
 import "./SavedMovies.css";
 
-function SavedMovies() {
+function SavedMovies({savedMovies}) {
   return (
     <section className="saved-movies">
       <SearchForm></SearchForm>

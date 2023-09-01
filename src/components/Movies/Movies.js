@@ -5,12 +5,12 @@ import Preloader from "../Preloader/Preloader";
 import SearchForm from "../SearchForm/SearchForm";
 import "./Movies.css";
 
-function Movies() {
+function Movies({handeOneSubmit, isAllMovies, handleSavedMovie, handleDeleteSavedMovie, savedMovies}) {
   return (
     <section className="movies">
-      <SearchForm></SearchForm>
+      <SearchForm handeOneSubmit={handeOneSubmit}></SearchForm>
       {/* <Preloader></Preloader> */}
-      <MoviesCardList movies={movies}></MoviesCardList>
+      <MoviesCardList movies={isAllMovies} handleSavedMovie={handleSavedMovie} handleDeleteSavedMovie={handleDeleteSavedMovie} savedMovies={savedMovies}></MoviesCardList>
     </section>
   );
 }

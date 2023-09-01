@@ -3,7 +3,7 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 import "./MoviesCardList.css";
 import "../Button/Button.css";
 
-function MoviesCardList(props) {
+function MoviesCardList({ movies, handleSavedMovie, handleDeleteSavedMovie, savedMovies }) {
   const [width, setWidth] = useState(window.innerWidth);
   const [moviesListLength, setmoviesListLength] = useState(12);
 
@@ -30,11 +30,19 @@ function MoviesCardList(props) {
   return (
     <section className="movies-cards">
       <div className="movies-cards__list">
-        {props.movies.slice(0, moviesListLength).map((movie) => {
-          return <MoviesCard key={movie._id} movie={movie} />;
+        {movies.slice(0, moviesListLength).map((movie) => {
+          return (
+            <MoviesCard
+              key={movie.id}
+              movie={movie}
+              handleSavedMovie={handleSavedMovie}
+              handleDeleteSavedMovie={handleDeleteSavedMovie}
+              savedMovies={savedMovies}
+            />
+          );
         })}
       </div>
-      {moviesListLength < props.movies.length && (
+      {moviesListLength < movies.length && (
         <button className="movies-cards__more-button button">Ещё</button>
       )}
     </section>

@@ -53,3 +53,36 @@ export const getUserInfo = () => {
     }
   }).then(checkResponse);
 }
+
+export const getSavedMovies = () => {
+  return fetch(`${BASE_URL}/movies`, {
+    method: "GET",
+    headers: {
+      authorization: `Bearer ${localStorage.getItem('jwt')}`,
+      "Content-Type": "application/json",
+    }
+  }).then(checkResponse);
+}
+
+
+export const postSavedMovie = (...body) => {
+  return fetch(`${BASE_URL}/movies`, {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${localStorage.getItem('jwt')}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(...body),
+  }).then(checkResponse);
+}
+
+
+export const deleteSavedMovie = () => {
+  return fetch(`${BASE_URL}/users/me`, {
+    method: "GET",
+    headers: {
+      authorization: `Bearer ${localStorage.getItem('jwt')}`,
+      "Content-Type": "application/json",
+    }
+  }).then(checkResponse);
+}
