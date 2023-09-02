@@ -47,7 +47,7 @@ function App() {
       .catch((err) => {
         console.log(`Ошибка сервера ${err}`);
       });
-  }, [isAllMovies]);
+  }, []);
 
   useEffect(() => {
     if (token) {
@@ -153,10 +153,13 @@ function App() {
   };
 
   const handleDeleteSavedMovie = (movie) => {
-    MainApi.deleteSavedMovie(movie.id)
-      .then((data) => {
+    const savedMovie = savedMovies.find(
+      (item) => item.id === movie.movieId || item.movieId === movie.movieId
+    );
+    MainApi.deleteSavedMovie(savedMovie._id)
+      .then(() => {
         const newMoviesList = savedMovies.filter((item) => {
-          if (movie.id === item.movieId) {
+          if (movie.id === item.movieId || item.movieId === movie.movieId) {
             return false;
           } else {
             return true;
@@ -167,7 +170,6 @@ function App() {
       .catch(console.log);
   };
 
-  console.log(savedMovies);
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="app">
@@ -196,6 +198,7 @@ function App() {
                   element={SavedMovies}
                   loggedIn={loggedIn}
                   savedMovies={savedMovies}
+                  handleDeleteSavedMovie={handleDeleteSavedMovie}
                 />
               }
             />

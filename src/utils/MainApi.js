@@ -77,9 +77,9 @@ export const postSavedMovie = (...body) => {
 }
 
 
-export const deleteSavedMovie = () => {
-  return fetch(`${BASE_URL}/users/me`, {
-    method: "GET",
+export const deleteSavedMovie = (movieId) => {
+  return fetch(`${BASE_URL}/movies/${movieId}`, {
+    method: "DELETE",
     headers: {
       authorization: `Bearer ${localStorage.getItem('jwt')}`,
       "Content-Type": "application/json",
