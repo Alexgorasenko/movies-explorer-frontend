@@ -12,7 +12,6 @@ import Register from "../Register/Register";
 import Footer from "../Footer/Footer";
 import PageNotFound from "../PageNotFound/PageNotFound";
 import * as MainApi from "../../utils/MainApi.js";
-import * as MoviesApi from "../../utils/MoviesApi.js";
 import { ProtectedRoute } from "../ProtectedRoute/ProtectedRoute";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
@@ -26,7 +25,10 @@ function App() {
     open: false,
   });
 
-  const [isAllMovies, setIsAllMovies] = useState([]);
+  const [isInfoTitle, setIsInfoTitle] = useState({
+    success: false,
+    msg: "Введите название фильма и нажмите кнопку",
+  });
   const [savedMovies, setSavedMovies] = useState([]);
 
   const token = localStorage.getItem("jwt");
@@ -37,7 +39,7 @@ function App() {
         open: false,
       });
     }, 3000);
-  }, [isSuccess.open]);
+  }, [currentUser]);
 
   useEffect(() => {
     MainApi.getSavedMovies()
@@ -110,13 +112,6 @@ function App() {
       });
   };
 
-  const hadleGetAllMovies = (e) => {
-    e.preventDefault();
-    MoviesApi.getMovies().then((data) => {
-      setIsAllMovies(data);
-    });
-  };
-
   const handleSavedMovie = (movie) => {
     const {
       country,
@@ -183,11 +178,11 @@ function App() {
                 <ProtectedRoute
                   element={Movies}
                   loggedIn={loggedIn}
-                  handeOneSubmit={hadleGetAllMovies}
-                  isAllMovies={isAllMovies}
                   handleSavedMovie={handleSavedMovie}
                   handleDeleteSavedMovie={handleDeleteSavedMovie}
                   savedMovies={savedMovies}
+                  setIsInfoTitle={setIsInfoTitle}
+                  isInfoTitle={isInfoTitle}
                 />
               }
             />
@@ -199,6 +194,8 @@ function App() {
                   loggedIn={loggedIn}
                   savedMovies={savedMovies}
                   handleDeleteSavedMovie={handleDeleteSavedMovie}
+                  setIsInfoTitle={setIsInfoTitle}
+                  isInfoTitle={isInfoTitle}
                 />
               }
             />
