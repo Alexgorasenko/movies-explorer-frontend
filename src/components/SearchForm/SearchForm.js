@@ -4,9 +4,13 @@ import "./SearchForm.css";
 import "../Button/Button.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-
-function SearchForm({ handeSearchMovie, handeIsShortMovie, isShortMovie, values, handleOneChange }) {
-
+function SearchForm({
+  handeSearchMovie,
+  handeIsShortMovie,
+  isShortMovie,
+  values,
+  handleOneChange,
+}) {
   const currentUserInfo = React.useContext(CurrentUserContext);
 
   const handeOneSubmit = (e) => {
@@ -15,10 +19,11 @@ function SearchForm({ handeSearchMovie, handeIsShortMovie, isShortMovie, values,
   };
 
   useEffect(() => {
-    const searchValue = localStorage.getItem(`${currentUserInfo.email} - movieSearch`);
+    const searchValue = localStorage.getItem(
+      `${currentUserInfo.email} - movieSearch`
+    );
     values.search = searchValue;
-},[currentUserInfo]);
-
+  }, [currentUserInfo]);
 
   return (
     <article className="search-form">

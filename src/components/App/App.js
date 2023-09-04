@@ -14,10 +14,15 @@ import PageNotFound from "../PageNotFound/PageNotFound";
 import * as MainApi from "../../utils/MainApi.js";
 import { ProtectedRoute } from "../ProtectedRoute/ProtectedRoute";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import Preloader from "../Preloader/Preloader";
 
 function App() {
   const navigate = useNavigate();
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingMovies, setIsLoadingMovies] = useState(false);
+  const [isLoadingSavedMovies, setIsLoadingSavedMovies] = useState(false);
+
+  const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setСurrentUser] = useState({});
   const [isSuccess, setIsSuccess] = useState({
     success: true,
@@ -42,13 +47,15 @@ function App() {
   }, [currentUser]);
 
   useEffect(() => {
+    setIsLoadingSavedMovies(false);
     MainApi.getSavedMovies()
       .then((data) => {
         setSavedMovies(data);
       })
       .catch((err) => {
         console.log(`Ошибка сервера ${err}`);
-      });
+      })
+      .finally(() => setIsLoadingSavedMovies(true));
   }, []);
 
   useEffect(() => {
@@ -60,12 +67,15 @@ function App() {
         })
         .catch((err) => {
           console.log(`Ошибка сервера ${err}`);
+        })
+        .finally(() => {
+          setIsLoading(true);
         });
     }
   }, []);
 
   const signOut = () => {
-    localStorage.removeItem("jwt");
+    localStorage.clear();
     navigate("/");
     setLoggedIn(false);
   };
@@ -112,6 +122,9 @@ function App() {
       });
   };
 
+
+
+
   const handleSavedMovie = (movie) => {
     const {
       country,
@@ -125,7 +138,7 @@ function App() {
       nameEN,
     } = movie;
 
-    const isSaved = savedMovies.some((item) => item.movieId === movie.id);
+    // const isSaved = savedMovies.some((item) => item.movieId === movie.id);
 
     MainApi.postSavedMovie({
       country,
@@ -166,75 +179,85 @@ function App() {
   };
 
   return (
-    <CurrentUserContext.Provider value={currentUser}>
-      <div className="app">
-        <Header loggedIn={loggedIn} />
-        <main className="content">
-          <Routes>
-            <Route path="/" element={<Main></Main>} />
-            <Route
-              path="/movies"
-              element={
-                <ProtectedRoute
-                  element={Movies}
-                  loggedIn={loggedIn}
-                  handleSavedMovie={handleSavedMovie}
-                  handleDeleteSavedMovie={handleDeleteSavedMovie}
-                  savedMovies={savedMovies}
-                  setIsInfoTitle={setIsInfoTitle}
-                  isInfoTitle={isInfoTitle}
-                />
-              }
-            />
-            <Route
-              path="/saved-movies"
-              element={
-                <ProtectedRoute
-                  element={SavedMovies}
-                  loggedIn={loggedIn}
-                  savedMovies={savedMovies}
-                  handleDeleteSavedMovie={handleDeleteSavedMovie}
-                  setIsInfoTitle={setIsInfoTitle}
-                  isInfoTitle={isInfoTitle}
-                />
-              }
-            />
-            <Route
-              path="/profile"
-              element={
-                <ProtectedRoute
-                  element={Profile}
-                  signOut={signOut}
-                  handleUpdateUser={handleUpdateUser}
-                  loggedIn={loggedIn}
-                  isSuccess={isSuccess}
-                />
-              }
-            />
-            <Route
-              path="/signin"
-              element={
-                <Login
-                  handleAuthorize={handleAuthorize}
-                  isSuccess={isSuccess}
-                />
-              }
-            />
-            <Route
-              path="/signup"
-              element={
-                <Register
-                  handleRegister={handleRegister}
-                  isSuccess={isSuccess}
-                />
-              }
-            />
-            <Route path="/*" element={<PageNotFound />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </CurrentUserContext.Provider>
+    <div className="app">
+      {!isLoading ? (
+        <Preloader />
+      ) : (
+        <CurrentUserContext.Provider value={currentUser}>
+          <Header loggedIn={loggedIn} />
+          <main className="content">
+            <Routes>
+              <Route path="/" element={<Main></Main>} />
+              <Route
+                path="/movies"
+                element={
+                  <ProtectedRoute
+                    element={Movies}
+                    loggedIn={loggedIn}
+                    handleSavedMovie={handleSavedMovie}
+                    handleDeleteSavedMovie={handleDeleteSavedMovie}
+                    savedMovies={savedMovies}
+                    setIsInfoTitle={setIsInfoTitle}
+                    isInfoTitle={isInfoTitle}
+                    isLoading={isLoading}
+                    setIsLoading={setIsLoading}
+                    isLoadingMovies={isLoadingMovies}
+                    setIsLoadingMovies={setIsLoadingMovies}
+                  />
+                }
+              />
+              <Route
+                path="/saved-movies"
+                element={
+                  <ProtectedRoute
+                    element={SavedMovies}
+                    loggedIn={loggedIn}
+                    savedMovies={savedMovies}
+                    handleDeleteSavedMovie={handleDeleteSavedMovie}
+                    setIsInfoTitle={setIsInfoTitle}
+                    isInfoTitle={isInfoTitle}
+                    isLoadingSavedMovies={isLoadingSavedMovies}
+                    setIsLoadingMovies={setIsLoadingMovies}
+                  />
+                }
+              />
+              <Route
+                path="/profile"
+                element={
+                  <ProtectedRoute
+                    element={Profile}
+                    signOut={signOut}
+                    handleUpdateUser={handleUpdateUser}
+                    loggedIn={loggedIn}
+                    isSuccess={isSuccess}
+                  />
+                }
+              />
+              <Route
+                path="/signin"
+                element={
+                  <Login
+                    handleAuthorize={handleAuthorize}
+                    isSuccess={isSuccess}
+                  />
+                }
+              />
+              <Route
+                path="/signup"
+                element={
+                  <Register
+                    handleRegister={handleRegister}
+                    isSuccess={isSuccess}
+                  />
+                }
+              />
+              <Route path="/*" element={<PageNotFound />} />
+            </Routes>
+          </main>
+          <Footer />
+        </CurrentUserContext.Provider>
+      )}
+    </div>
   );
 }
 

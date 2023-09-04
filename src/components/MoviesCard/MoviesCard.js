@@ -7,7 +7,7 @@ function MoviesCard({
   movie,
   handleSavedMovie,
   handleDeleteSavedMovie,
-  isSaved
+  isSaved,
 }) {
   const location = useLocation();
 
@@ -24,13 +24,21 @@ function MoviesCard({
   return (
     <article className="movie-card">
       <div className="movie-card__picture">
-        <img
-          src={location.pathname === "/saved-movies"
-          ? `${movie.image}`
-          : `https://api.nomoreparties.co/${movie.image.url}`}
-          alt={movie.name}
-          className="movie-card__image"
-        />
+        <a
+          className="movie-card__link"
+          target="_blank"
+          href={movie.trailerLink}
+        >
+          <img
+            src={
+              location.pathname === "/saved-movies"
+                ? `${movie.image}`
+                : `https://api.nomoreparties.co/${movie.image.url}`
+            }
+            alt={movie.name}
+            className="movie-card__image"
+          />
+        </a>
         {isSaved ? (
           <button
             className={

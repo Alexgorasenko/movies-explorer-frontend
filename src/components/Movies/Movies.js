@@ -8,14 +8,23 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import useFormWithValidation from "../../hooks/useFormWithValidation";
 import { filterMovies, filterShortMovies } from "../../utils/FiltredMovies";
 
-function Movies({ handleSavedMovie, handleDeleteSavedMovie, savedMovies, setIsInfoTitle, isInfoTitle }) {
+function Movies({
+  handleSavedMovie,
+  handleDeleteSavedMovie,
+  savedMovies,
+  setIsInfoTitle,
+  isInfoTitle,
+  setIsLoading,
+  isLoading,
+  isLoadingMovies,
+  setIsLoadingMovies,
+}) {
   const currentUserInfo = React.useContext(CurrentUserContext);
   const { values, handleOneChange } = useFormWithValidation();
   const [isAllMovies, setIsAllMovies] = useState([]);
   const [isShortMovie, setIsShortMovie] = useState(false);
   const [requestMovie, setRequestMovie] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState([]);
-
 
   const handeIsShortMovie = () => {
     setIsShortMovie(!isShortMovie);
@@ -36,6 +45,11 @@ function Movies({ handleSavedMovie, handleDeleteSavedMovie, savedMovies, setIsIn
       setIsInfoTitle({
         successful: false,
         msg: "Ничего не найдено.",
+      });
+    } else {
+      setIsInfoTitle({
+        successful: true,
+        msg: "",
       });
     }
     setRequestMovie(moviesList);
@@ -60,22 +74,26 @@ function Movies({ handleSavedMovie, handleDeleteSavedMovie, savedMovies, setIsIn
         successful: false,
         msg: "Нужно ввести ключевое слово",
       });
-    } else {
+    }
+    if (isAllMovies.length === 0) {
+      setIsLoadingMovies(true);
       MoviesApi.getMovies()
         .then((movies) => {
           setIsAllMovies(movies);
           handleSetFilteredMovies(movies, inputValue, isShortMovie);
-          setIsInfoTitle({
-            successful: true,
-            msg: "",
-          });
         })
-        .catch(() =>
-        setIsInfoTitle({
+        .catch(() => {
+          setIsInfoTitle({
             successful: false,
             text: "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.",
-          })
-        );
+          });
+          setIsLoadingMovies(true);
+        })
+        .finally(() => {
+          setIsLoadingMovies(false);
+        });
+    } else {
+      handleSetFilteredMovies(isAllMovies, inputValue, isShortMovie);
     }
   };
 
@@ -90,15 +108,12 @@ function Movies({ handleSavedMovie, handleDeleteSavedMovie, savedMovies, setIsIn
   }, [currentUserInfo]);
 
   useEffect(() => {
+    setIsLoadingMovies(false);
     if (localStorage.getItem(`${currentUserInfo.email} - movies`)) {
       const movies = JSON.parse(
         localStorage.getItem(`${currentUserInfo.email} - movies`)
       );
       setRequestMovie(movies);
-      setIsInfoTitle({
-        successful: true,
-        msg: "",
-      });
       if (
         localStorage.getItem(`${currentUserInfo.email} - shortMovies`) ===
         "true"
@@ -107,8 +122,8 @@ function Movies({ handleSavedMovie, handleDeleteSavedMovie, savedMovies, setIsIn
       } else {
         setFilteredMovies(movies);
         setIsInfoTitle({
-          successful: true,
-          msg: "",
+          successful: false,
+          msg: "Нужно ввести ключевое слово",
         });
       }
     }
@@ -126,7 +141,7 @@ function Movies({ handleSavedMovie, handleDeleteSavedMovie, savedMovies, setIsIn
         values={values}
         handleOneChange={handleOneChange}
       ></SearchForm>
-      {/* <Preloader></Preloader> */}
+      {isLoadingMovies && <Preloader />}
       <MoviesCardList
         movies={filteredMovies}
         handleSavedMovie={handleSavedMovie}

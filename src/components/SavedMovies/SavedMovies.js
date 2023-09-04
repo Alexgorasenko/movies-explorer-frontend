@@ -12,6 +12,8 @@ function SavedMovies({
   handleDeleteSavedMovie,
   setIsInfoTitle,
   isInfoTitle,
+  isLoadingSavedMovies,
+  setIsLoadingMovies,
 }) {
   const currentUserInfo = React.useContext(CurrentUserContext);
   const { values, handleOneChange } = useFormWithValidation();
@@ -20,20 +22,21 @@ function SavedMovies({
   const [filteredSavedMovies, setFilteredSavedMovies] = useState([]);
 
   function handleSearchSubmit(inputValue) {
-    console.log(inputValue);
     const moviesList = filterMovies(savedMovies, inputValue, isShortMovie);
+    console.log(moviesList);
     if (moviesList.length === 0) {
+      setFilteredSavedMovies([])
       setIsInfoTitle({
-        isOpen: true,
-        successful: false,
-        text: 'Ничего не найдено.',
+        success: false,
+        msg: "Ничего не найдено.",
       });
     } else {
+      setIsLoadingMovies(true);
       setFilteredSavedMovies(moviesList);
       setRequestSavedMovie(moviesList);
     }
+    console.log(isInfoTitle);
   }
-
 
   function handleShortFilms() {
     if (!isShortMovie) {
@@ -42,12 +45,18 @@ function SavedMovies({
       setRequestSavedMovie(filterShortMovies(filteredSavedMovies));
     } else {
       setIsShortMovie(false);
-      localStorage.setItem(`${currentUserInfo.email} - shortSavedMovies`, false);
+      localStorage.setItem(
+        `${currentUserInfo.email} - shortSavedMovies`,
+        false
+      );
       setRequestSavedMovie(filteredSavedMovies);
     }
   }
   useEffect(() => {
-    if (localStorage.getItem(`${currentUserInfo.email} - shortSavedMovies`) === 'true') {
+    if (
+      localStorage.getItem(`${currentUserInfo.email} - shortSavedMovies`) ===
+      "true"
+    ) {
       setIsShortMovie(true);
       setRequestSavedMovie(filterShortMovies(savedMovies));
     } else {
@@ -60,9 +69,13 @@ function SavedMovies({
     setFilteredSavedMovies(savedMovies);
   }, [savedMovies]);
 
+
+
+
+
   return (
     <section className="saved-movies">
-       {!isInfoTitle.success && (
+      {!isInfoTitle.success && (
         <h4 className="saved-movies__info-title">{isInfoTitle.msg}</h4>
       )}
       <SearchForm
@@ -72,9 +85,9 @@ function SavedMovies({
         handleOneChange={handleOneChange}
         handeSearchMovie={handleSearchSubmit}
       ></SearchForm>
-      {/* <Preloader></Preloader> */}
+      {!isLoadingSavedMovies && <Preloader />}
       <MoviesCardList
-        movies={requestSavedMovie}
+        movies={filteredSavedMovies}
         handleDeleteSavedMovie={handleDeleteSavedMovie}
       ></MoviesCardList>
     </section>

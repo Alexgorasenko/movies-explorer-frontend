@@ -9,9 +9,11 @@ function MoviesCardList({
   handleSavedMovie,
   handleDeleteSavedMovie,
   savedMovies,
+  isLoadingMovies,
 }) {
   const [width, setWidth] = useState(window.innerWidth);
   const [moviesListLength, setmoviesListLength] = useState(12);
+
   const location = useLocation();
 
   useEffect(() => {
@@ -65,7 +67,12 @@ function MoviesCardList({
         })}
       </div>
       {moviesListLength < movies.length && (
-        <button className="movies-cards__more-button button" onClick={showMoreMovies}>Ещё</button>
+        <button
+          className="movies-cards__more-button button"
+          onClick={showMoreMovies}
+        >
+          Ещё
+        </button>
       )}
     </section>
   );
