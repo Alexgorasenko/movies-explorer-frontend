@@ -70,6 +70,8 @@ function App() {
         .finally(() => {
           setIsLoading(true);
         });
+    }else{
+      setIsLoading(true);
     }
   }, []);
 
