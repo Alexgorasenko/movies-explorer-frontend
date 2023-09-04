@@ -7,7 +7,6 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function Profile({ signOut, handleUpdateUser, isSuccess, is  }) {
   const currentUserInfo = React.useContext(CurrentUserContext);
-  console.log(currentUserInfo);
 
   const { values, handleOneChange, resetForm, errors, isValid, setValues } =
     useFormWithValidation();
@@ -15,7 +14,7 @@ function Profile({ signOut, handleUpdateUser, isSuccess, is  }) {
 
   useEffect(() => {
     setValues({ name: currentUserInfo.name, email: currentUserInfo.email });
-  }, []);
+  }, [currentUserInfo]);
 
   useEffect(() => {
       resetForm(currentUserInfo, {}, true);
