@@ -9,7 +9,6 @@ function MoviesCardList({
   handleSavedMovie,
   handleDeleteSavedMovie,
   savedMovies,
-  isLoadingMovies,
 }) {
   const [width, setWidth] = useState(window.innerWidth);
   const [moviesListLength, setmoviesListLength] = useState(12);

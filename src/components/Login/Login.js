@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PageWithForm from "../PageWithForm/PageWithForm";
 
-function Login({handleAuthorize, isSuccess}) {
+function Login({ handleAuthorize, isSuccess }) {
   return (
     <PageWithForm
       name="login"

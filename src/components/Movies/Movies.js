@@ -14,8 +14,6 @@ function Movies({
   savedMovies,
   setIsInfoTitle,
   isInfoTitle,
-  setIsLoading,
-  isLoading,
   isLoadingMovies,
   setIsLoadingMovies,
 }) {

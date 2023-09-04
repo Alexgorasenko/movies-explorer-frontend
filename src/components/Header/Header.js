@@ -5,9 +5,7 @@ import "./Header.css";
 import Navigation from "../Navigation/Navigation";
 import "../Button/Button.css";
 
-function Header({loggedIn}) {
-
-
+function Header({ loggedIn }) {
   return (
     <header className="header">
       <Link to="/" className="header__nav-link button">

@@ -25,7 +25,7 @@ function SavedMovies({
     const moviesList = filterMovies(savedMovies, inputValue, isShortMovie);
     console.log(moviesList);
     if (moviesList.length === 0) {
-      setFilteredSavedMovies([])
+      setFilteredSavedMovies([]);
       setIsInfoTitle({
         success: false,
         msg: "Ничего не найдено.",
@@ -68,10 +68,6 @@ function SavedMovies({
   useEffect(() => {
     setFilteredSavedMovies(savedMovies);
   }, [savedMovies]);
-
-
-
-
 
   return (
     <section className="saved-movies">

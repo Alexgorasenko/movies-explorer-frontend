@@ -9,4 +9,10 @@
 
 Адрес репозитория (ветка level-1) : https://github.com/Alexgorasenko/movies-explorer-frontend
 
-Ссылка на pull request : https://github.com/Alexgorasenko/movies-explorer-frontend/pull/1
+Ссылка на pull request : https://github.com/Alexgorasenko/movies-explorer-frontend/pull/2
+
+IP-адрес 158.160.34.153
+
+Frontend https://alex-gorasenko.movies.nomoreparties.co
+
+Backend https://api.alex-gorasenko.movies.nomoreparties.co

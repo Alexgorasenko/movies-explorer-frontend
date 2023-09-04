@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-
 import "./App.css";
-import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
@@ -122,9 +121,6 @@ function App() {
       });
   };
 
-
-
-
   const handleSavedMovie = (movie) => {
     const {
       country,
@@ -137,8 +133,6 @@ function App() {
       nameRU,
       nameEN,
     } = movie;
-
-    // const isSaved = savedMovies.some((item) => item.movieId === movie.id);
 
     MainApi.postSavedMovie({
       country,
@@ -199,8 +193,6 @@ function App() {
                     savedMovies={savedMovies}
                     setIsInfoTitle={setIsInfoTitle}
                     isInfoTitle={isInfoTitle}
-                    isLoading={isLoading}
-                    setIsLoading={setIsLoading}
                     isLoadingMovies={isLoadingMovies}
                     setIsLoadingMovies={setIsLoadingMovies}
                   />
