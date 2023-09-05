@@ -3,6 +3,7 @@ import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import "./SearchForm.css";
 import "../Button/Button.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { useLocation } from "react-router-dom";
 
 function SearchForm({
   handeSearchMovie,
@@ -12,6 +13,7 @@ function SearchForm({
   handleOneChange,
 }) {
   const currentUserInfo = React.useContext(CurrentUserContext);
+  const location = useLocation();
 
   const handeOneSubmit = (e) => {
     e.preventDefault();
@@ -19,10 +21,14 @@ function SearchForm({
   };
 
   useEffect(() => {
-    const searchValue = localStorage.getItem(
-      `${currentUserInfo.email} - movieSearch`
-    );
-    values.search = searchValue;
+    if (location.pathname === "/movies") {
+      const searchValue = localStorage.getItem(
+        `${currentUserInfo.email} - movieSearch`
+      );
+      values.search = searchValue;
+    } else {
+      values.search = "";
+    }
   }, [currentUserInfo]);
 
   return (

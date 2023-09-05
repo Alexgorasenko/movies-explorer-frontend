@@ -16,6 +16,8 @@ function PageWithForm({
   pageType,
   onSubmit,
   isSuccess,
+  setIsSuccess,
+  isLoadingReq,
 }) {
   const { values, handleOneChange, resetForm, errors, isValid } =
     useFormWithValidation();
@@ -24,13 +26,20 @@ function PageWithForm({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(values);
     onSubmit(values);
   };
 
   useEffect(() => {
     resetForm();
   }, [success]);
+
+  const handleRemoveError = () => {
+    setIsSuccess({
+      success: true,
+      msg: "",
+      open: false,
+    });
+  };
 
   return (
     <section className="page-form">
@@ -65,6 +74,7 @@ function PageWithForm({
                   minLength={2}
                   maxLength={30}
                   value={values.name || ""}
+                  disabled={isLoadingReq}
                 />
                 <span className="page-form__error">{errors.name || ""}</span>
               </label>
@@ -82,6 +92,7 @@ function PageWithForm({
                 required
                 onChange={handleOneChange}
                 value={values.email || ""}
+                disabled={isLoadingReq}
               />
               <span className="page-form__error">{errors.email || ""}</span>
             </label>
@@ -99,6 +110,7 @@ function PageWithForm({
                 onChange={handleOneChange}
                 minLength={2}
                 value={values.password || ""}
+                disabled={isLoadingReq}
               />
               <span className="page-form__error">{errors.password || ""}</span>
             </label>
@@ -107,7 +119,7 @@ function PageWithForm({
             <button
               type="submit"
               className="page-form__submit button"
-              disabled={!isValid}
+              disabled={!isValid || isLoadingReq}
             >
               {buttonText}
             </button>
@@ -117,7 +129,11 @@ function PageWithForm({
         <div className="page-form__auth">
           <p className="page-form__auth-text">
             {authDescription}{" "}
-            <Link to={authButtonLink} className="page-form__auth-link link">
+            <Link
+              to={authButtonLink}
+              className="page-form__auth-link link"
+              onClick={handleRemoveError}
+            >
               {authButtonText}
             </Link>
           </p>

@@ -4,33 +4,34 @@ import "../Button/Button.css";
 import useFormWithValidation from "../../hooks/useFormWithValidation";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-
-function Profile({ signOut, handleUpdateUser, isSuccess, is  }) {
+function Profile({ signOut, handleUpdateUser, isSuccess, is }) {
   const currentUserInfo = React.useContext(CurrentUserContext);
 
   const { values, handleOneChange, resetForm, errors, isValid, setValues } =
     useFormWithValidation();
   const { success, msg, open } = isSuccess;
 
-  useEffect(() => {
-    setValues({ name: currentUserInfo.name, email: currentUserInfo.email });
-  }, [currentUserInfo]);
+  // useEffect(() => {
+  //   setValues({ name: currentUserInfo.name, email: currentUserInfo.email });
+  // }, []);
 
   useEffect(() => {
-      resetForm(currentUserInfo, {}, true);
+    resetForm(currentUserInfo, {}, true);
   }, [currentUserInfo, resetForm]);
 
-
-  const disabledSubmitButton = (!isValid || (currentUserInfo.name === values.name && currentUserInfo.email === values.email));
+  const disabledSubmitButton =
+    !isValid ||
+    (currentUserInfo.name === values.name &&
+      currentUserInfo.email === values.email);
 
   const [isEdit, setIsEdit] = useState(false);
 
   function handlesetIsEdit(e) {
     e.preventDefault();
     setIsEdit(true);
-    if(isEdit){
+    if (isEdit) {
       setIsEdit(false);
-    }else{
+    } else {
       setIsEdit(true);
     }
   }
@@ -38,7 +39,7 @@ function Profile({ signOut, handleUpdateUser, isSuccess, is  }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     handleUpdateUser(values);
-    handlesetIsEdit(e)
+    handlesetIsEdit(e);
   };
 
   return (
@@ -93,14 +94,18 @@ function Profile({ signOut, handleUpdateUser, isSuccess, is  }) {
               <button
                 type="submit"
                 className="profile-form__submit button"
-                disabled={!isValid && disabledSubmitButton}
+                disabled={disabledSubmitButton}
               >
                 Сохранить
               </button>
             </div>
           )}
           {success ? (
-            <span className={`profile-form__submit-success ${open && 'profile-form__submit-success_active'}`}>
+            <span
+              className={`profile-form__submit-success ${
+                open && "profile-form__submit-success_active"
+              }`}
+            >
               Профиль успешно обновлён
             </span>
           ) : (

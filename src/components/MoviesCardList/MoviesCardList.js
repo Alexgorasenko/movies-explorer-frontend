@@ -3,12 +3,14 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 import "./MoviesCardList.css";
 import "../Button/Button.css";
 import { useLocation } from "react-router-dom";
+import { DEVICE_PARAMS } from "../../utils/constants.js";
 
 function MoviesCardList({
   movies,
   handleSavedMovie,
   handleDeleteSavedMovie,
   savedMovies,
+  requestMovie,
 }) {
   const [width, setWidth] = useState(window.innerWidth);
   const [moviesListLength, setmoviesListLength] = useState(12);
@@ -26,48 +28,75 @@ function MoviesCardList({
   }, []);
 
   useEffect(() => {
-    if (width > 1024) {
-      setmoviesListLength(12);
-    } else if (width <= 1024 && width >= 601) {
-      setmoviesListLength(8);
+    if (width > DEVICE_PARAMS.desktop.width) {
+      setmoviesListLength(DEVICE_PARAMS.desktop.movies.total);
+    } else if (
+      width <= DEVICE_PARAMS.desktop.width &&
+      width >= DEVICE_PARAMS.mobile.width
+    ) {
+      setmoviesListLength(DEVICE_PARAMS.tablet.movies.total);
     } else {
-      setmoviesListLength(5);
+      setmoviesListLength(DEVICE_PARAMS.mobile.movies.total);
     }
-  }, [width]);
+  }, [width, requestMovie]);
 
   const showMoreMovies = () => {
-    if (width > 1024) {
-      setmoviesListLength(moviesListLength + 12);
-    } else if (width <= 1024 && width >= 601) {
-      setmoviesListLength(moviesListLength + 8);
+    if (width > DEVICE_PARAMS.desktop.width) {
+      setmoviesListLength(moviesListLength + DEVICE_PARAMS.desktop.movies.more);
+    } else if (
+      width <= DEVICE_PARAMS.desktop.width &&
+      width >= DEVICE_PARAMS.mobile.width
+    ) {
+      setmoviesListLength(moviesListLength + DEVICE_PARAMS.tablet.movies.more);
     } else {
-      setmoviesListLength(moviesListLength + 5);
+      setmoviesListLength(moviesListLength + DEVICE_PARAMS.mobile.movies.more);
     }
   };
 
   return (
     <section className="movies-cards">
-      <div className="movies-cards__list">
-        {movies.slice(0, moviesListLength).map((movie) => {
-          return (
-            <MoviesCard
-              key={movie.id}
-              movie={movie}
-              handleSavedMovie={handleSavedMovie}
-              handleDeleteSavedMovie={handleDeleteSavedMovie}
-              savedMovies={savedMovies}
-              isSaved={
-                location.pathname === "/saved-movies"
-                  ? true
-                  : savedMovies.some((item) => item.movieId === movie.id)
-              }
-            />
-          );
-        })}
-      </div>
+      {location.pathname === "/saved-movies" ? (
+        <div className="movies-cards__list">
+          {movies.map((movie) => {
+            return (
+              <MoviesCard
+                key={movie.id}
+                movie={movie}
+                handleSavedMovie={handleSavedMovie}
+                handleDeleteSavedMovie={handleDeleteSavedMovie}
+                savedMovies={savedMovies}
+                isSaved={true}
+              />
+            );
+          })}
+        </div>
+      ) : (
+        <div className="movies-cards__list">
+          {movies.slice(0, moviesListLength).map((movie) => {
+            return (
+              <MoviesCard
+                key={movie.id}
+                movie={movie}
+                handleSavedMovie={handleSavedMovie}
+                handleDeleteSavedMovie={handleDeleteSavedMovie}
+                savedMovies={savedMovies}
+                isSaved={
+                  location.pathname === "/saved-movies"
+                    ? true
+                    : savedMovies.some((item) => item.movieId === movie.id)
+                }
+              />
+            );
+          })}
+        </div>
+      )}
+
       {moviesListLength < movies.length && (
         <button
-          className="movies-cards__more-button button"
+          className={`movies-cards__more-button ${
+            location.pathname === "/saved-movies" &&
+            "movies-cards__more-button-hidden"
+          }  button`}
           onClick={showMoreMovies}
         >
           Ещё

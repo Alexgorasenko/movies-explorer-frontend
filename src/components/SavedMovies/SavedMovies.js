@@ -23,9 +23,10 @@ function SavedMovies({
 
   function handleSearchSubmit(inputValue) {
     const moviesList = filterMovies(savedMovies, inputValue, isShortMovie);
-    console.log(moviesList);
+
     if (moviesList.length === 0) {
       setFilteredSavedMovies([]);
+      setRequestSavedMovie([]);
       setIsInfoTitle({
         success: false,
         msg: "Ничего не найдено.",
@@ -34,8 +35,11 @@ function SavedMovies({
       setIsLoadingMovies(true);
       setFilteredSavedMovies(moviesList);
       setRequestSavedMovie(moviesList);
+      setIsInfoTitle({
+        success: true,
+        msg: "",
+      });
     }
-    console.log(isInfoTitle);
   }
 
   function handleShortFilms() {
@@ -69,6 +73,8 @@ function SavedMovies({
     setFilteredSavedMovies(savedMovies);
   }, [savedMovies]);
 
+  console.log(requestSavedMovie, "requestSavedMovie");
+
   return (
     <section className="saved-movies">
       {!isInfoTitle.success && (
@@ -83,7 +89,7 @@ function SavedMovies({
       ></SearchForm>
       {!isLoadingSavedMovies && <Preloader />}
       <MoviesCardList
-        movies={filteredSavedMovies}
+        movies={requestSavedMovie}
         handleDeleteSavedMovie={handleDeleteSavedMovie}
       ></MoviesCardList>
     </section>

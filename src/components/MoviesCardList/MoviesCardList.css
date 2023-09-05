@@ -32,6 +32,9 @@
   height: 36px;
 }
 
+.movies-cards__more-button-hidden{
+  display: none;
+}
 
 @media screen and (max-width: 1024px) {
   .movies-cards__list {

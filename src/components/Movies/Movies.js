@@ -28,6 +28,7 @@ function Movies({
     setIsShortMovie(!isShortMovie);
     if (!isShortMovie) {
       setFilteredMovies(filterShortMovies(requestMovie));
+
     } else {
       setFilteredMovies(requestMovie);
     }
@@ -36,6 +37,7 @@ function Movies({
       !isShortMovie
     );
   };
+
 
   function handleSetFilteredMovies(movies, userQuery, shortMoviesCheckbox) {
     const moviesList = filterMovies(movies, userQuery, shortMoviesCheckbox);
@@ -145,6 +147,7 @@ function Movies({
         handleSavedMovie={handleSavedMovie}
         handleDeleteSavedMovie={handleDeleteSavedMovie}
         savedMovies={savedMovies}
+        requestMovie={requestMovie}
       ></MoviesCardList>
     </section>
   );

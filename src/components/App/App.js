@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
@@ -18,6 +18,8 @@ import Preloader from "../Preloader/Preloader";
 function App() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingReq, setIsLoadingReq] = useState(false);
+
   const [isLoadingMovies, setIsLoadingMovies] = useState(false);
   const [isLoadingSavedMovies, setIsLoadingSavedMovies] = useState(false);
 
@@ -70,15 +72,32 @@ function App() {
         .finally(() => {
           setIsLoading(true);
         });
-    }else{
+    } else {
       setIsLoading(true);
     }
   }, []);
+
+  useEffect(() => {
+    if (loggedIn) {
+      setIsLoading(false);
+      MainApi.getUserInfo()
+        .then((res) => setСurrentUser(res))
+        .catch((err) =>
+          setIsSuccess({
+            success: true,
+            msg: "err",
+            open: false,
+          })
+        )
+        .finally(() => setIsLoading(true));
+    }
+  }, [loggedIn]);
 
   const signOut = () => {
     localStorage.clear();
     navigate("/");
     setLoggedIn(false);
+    setСurrentUser({});
   };
 
   const handleLogin = () => {
@@ -86,6 +105,7 @@ function App() {
   };
 
   const handleRegister = ({ name, password, email }) => {
+    setIsLoadingReq(true);
     MainApi.register(name, password, email)
       .then((data) => {
         if (data._id) {
@@ -95,10 +115,14 @@ function App() {
       })
       .catch((err) => {
         setIsSuccess({ success: false, msg: err });
+      })
+      .finally(() => {
+        setIsLoadingReq(false);
       });
   };
 
   const handleAuthorize = ({ email, password }) => {
+    setIsLoadingReq(true);
     MainApi.authorize(email, password)
       .then((data) => {
         localStorage.setItem("jwt", data.token);
@@ -108,6 +132,9 @@ function App() {
       })
       .catch((err) => {
         setIsSuccess({ success: false, msg: err });
+      })
+      .finally(() => {
+        setIsLoadingReq(false);
       });
   };
 
@@ -233,6 +260,9 @@ function App() {
                   <Login
                     handleAuthorize={handleAuthorize}
                     isSuccess={isSuccess}
+                    loggedIn={loggedIn}
+                    setIsSuccess={setIsSuccess}
+                    isLoadingReq={isLoadingReq}
                   />
                 }
               />
@@ -242,6 +272,9 @@ function App() {
                   <Register
                     handleRegister={handleRegister}
                     isSuccess={isSuccess}
+                    loggedIn={loggedIn}
+                    setIsSuccess={setIsSuccess}
+                    isLoadingReq={isLoadingReq}
                   />
                 }
               />
