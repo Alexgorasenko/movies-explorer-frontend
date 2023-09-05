@@ -56,7 +56,10 @@ function App() {
       .catch((err) => {
         console.log(`Ошибка сервера ${err}`);
       })
-      .finally(() => setIsLoadingSavedMovies(true));
+      .finally(() => {
+        setIsLoadingSavedMovies(true);
+        setIsLoading(true);
+      });
   }, []);
 
   useEffect(() => {

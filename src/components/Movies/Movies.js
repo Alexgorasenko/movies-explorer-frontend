@@ -28,16 +28,15 @@ function Movies({
     setIsShortMovie(!isShortMovie);
     if (!isShortMovie) {
       setFilteredMovies(filterShortMovies(requestMovie));
-
     } else {
       setFilteredMovies(requestMovie);
+      handleSetFilteredMovies(isAllMovies, values.search, !isShortMovie);
     }
     localStorage.setItem(
       `${currentUserInfo.email} - shortMovies`,
       !isShortMovie
     );
   };
-
 
   function handleSetFilteredMovies(movies, userQuery, shortMoviesCheckbox) {
     const moviesList = filterMovies(movies, userQuery, shortMoviesCheckbox);
@@ -128,6 +127,8 @@ function Movies({
       }
     }
   }, [currentUserInfo]);
+
+
 
   return (
     <section className="movies">

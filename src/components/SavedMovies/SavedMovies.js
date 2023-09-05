@@ -23,6 +23,10 @@ function SavedMovies({
 
   function handleSearchSubmit(inputValue) {
     const moviesList = filterMovies(savedMovies, inputValue, isShortMovie);
+    localStorage.setItem(
+      `${currentUserInfo.email} - savedMovieSearch`,
+      inputValue
+    );
 
     if (moviesList.length === 0) {
       setFilteredSavedMovies([]);
@@ -70,8 +74,19 @@ function SavedMovies({
   }, [savedMovies, currentUserInfo]);
 
   useEffect(() => {
+    const searchSaveValue = localStorage.getItem(
+      `${currentUserInfo.email} - savedMovieSearch`
+    );
     setFilteredSavedMovies(savedMovies);
+    handleSearchSubmit(searchSaveValue);
   }, [savedMovies]);
+
+  useEffect(() => {
+    const searchSaveValue = localStorage.getItem(
+      `${currentUserInfo.email} - savedMovieSearch`
+    );
+    localStorage.setItem(`${currentUserInfo.email} - savedMovieSearch`, "");
+  }, [currentUserInfo]);
 
   console.log(requestSavedMovie, "requestSavedMovie");
 
