@@ -78,7 +78,10 @@ function SavedMovies({
       `${currentUserInfo.email} - savedMovieSearch`
     );
     setFilteredSavedMovies(savedMovies);
+    if (searchSaveValue) {
     handleSearchSubmit(searchSaveValue);
+
+    }
   }, [savedMovies]);
 
   useEffect(() => {
