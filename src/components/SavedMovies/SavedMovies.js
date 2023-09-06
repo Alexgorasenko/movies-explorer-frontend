@@ -81,8 +81,16 @@ function SavedMovies({
     setFilteredSavedMovies(savedMovies);
     if (searchSaveValue) {
       handleSearchSubmit(searchSaveValue);
+      setIsInfoTitle({
+        success: true,
+        msg: "",
+      })
     }else{
       setRequestSavedMovie(savedMovies);
+      setIsInfoTitle({
+        success: true,
+        msg: "",
+      })
     }
   }, [savedMovies, currentUserInfo, requestSavedMovie]);
 
