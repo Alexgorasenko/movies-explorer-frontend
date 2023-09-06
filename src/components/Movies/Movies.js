@@ -120,10 +120,6 @@ function Movies({
         setFilteredMovies(filterShortMovies(movies));
       } else {
         setFilteredMovies(movies);
-        setIsInfoTitle({
-          successful: false,
-          msg: "Нужно ввести ключевое слово",
-        });
       }
     }
   }, [currentUserInfo]);
