@@ -39,7 +39,6 @@ function App() {
   const [savedMovies, setSavedMovies] = useState([]);
 
   const token = localStorage.getItem("jwt");
-  console.log(isInfoTitle);
   useEffect(() => {
     setTimeout(() => {
       setIsSuccess({
@@ -102,6 +101,7 @@ function App() {
     navigate("/");
     setLoggedIn(false);
     setСurrentUser({});
+    setSavedMovies([])
   };
 
   const handleLogin = () => {
