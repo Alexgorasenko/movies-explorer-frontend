@@ -24,6 +24,7 @@ function Login({
           isSuccess={isSuccess}
           setIsSuccess={setIsSuccess}
           isLoadingReq={isLoadingReq}
+          loggedIn={loggedIn}
         ></PageWithForm>
       ) : (
         <Navigate to="/" replace />

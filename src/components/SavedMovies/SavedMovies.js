@@ -14,6 +14,7 @@ function SavedMovies({
   isInfoTitle,
   isLoadingSavedMovies,
   setIsLoadingMovies,
+  loggedIn
 }) {
   const currentUserInfo = React.useContext(CurrentUserContext);
   const { values, handleOneChange } = useFormWithValidation();
@@ -91,7 +92,6 @@ function SavedMovies({
     localStorage.setItem(`${currentUserInfo.email} - savedMovieSearch`, "");
   }, [currentUserInfo]);
 
-  console.log(requestSavedMovie, "requestSavedMovie");
 
   return (
     <section className="saved-movies">

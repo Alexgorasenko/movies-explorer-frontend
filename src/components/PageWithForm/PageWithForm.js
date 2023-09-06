@@ -18,6 +18,7 @@ function PageWithForm({
   isSuccess,
   setIsSuccess,
   isLoadingReq,
+  loggedIn
 }) {
   const { values, handleOneChange, resetForm, errors, isValid } =
     useFormWithValidation();
@@ -31,15 +32,17 @@ function PageWithForm({
 
   useEffect(() => {
     resetForm();
-  }, [success]);
+  }, [loggedIn]);
 
-  const handleRemoveError = () => {
+
+
+  useEffect(() => {
     setIsSuccess({
       success: true,
       msg: "",
       open: false,
     });
-  };
+  }, []);
 
   return (
     <section className="page-form">
@@ -132,7 +135,6 @@ function PageWithForm({
             <Link
               to={authButtonLink}
               className="page-form__auth-link link"
-              onClick={handleRemoveError}
             >
               {authButtonText}
             </Link>

@@ -4,7 +4,7 @@ import "../Button/Button.css";
 import useFormWithValidation from "../../hooks/useFormWithValidation";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-function Profile({ signOut, handleUpdateUser, isSuccess, is }) {
+function Profile({ signOut, handleUpdateUser, isSuccess, isLoadingReq, isEdit, setIsEdit }) {
   const currentUserInfo = React.useContext(CurrentUserContext);
 
   const { values, handleOneChange, resetForm, errors, isValid } =
@@ -20,22 +20,17 @@ function Profile({ signOut, handleUpdateUser, isSuccess, is }) {
     (currentUserInfo.name === values.name &&
       currentUserInfo.email === values.email);
 
-  const [isEdit, setIsEdit] = useState(false);
+      // const [isEdit, setIsEdit] = useState(false);
 
-  function handlesetIsEdit(e) {
+  function handleSetIsEdit(e) {
     e.preventDefault();
     setIsEdit(true);
-    if (isEdit) {
-      setIsEdit(false);
-    } else {
-      setIsEdit(true);
-    }
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     handleUpdateUser(values);
-    handlesetIsEdit(e);
+    // handleSetIsEdit(e);
   };
 
   return (
@@ -52,7 +47,7 @@ function Profile({ signOut, handleUpdateUser, isSuccess, is }) {
             onChange={handleOneChange}
             required
             placeholder="Name"
-            disabled={!isEdit}
+            disabled={!isEdit || isLoadingReq}
           />
           <span className="profile__from-input-error">{errors.name || ""}</span>
         </div>
@@ -66,7 +61,7 @@ function Profile({ signOut, handleUpdateUser, isSuccess, is }) {
             onChange={handleOneChange}
             required
             placeholder="E-mail"
-            disabled={!isEdit}
+            disabled={!isEdit || isLoadingReq}
           />
           <span className="profile__from-input-error">
             {errors.email || ""}
@@ -77,7 +72,7 @@ function Profile({ signOut, handleUpdateUser, isSuccess, is }) {
             <>
               <button
                 className="profile__form-edit button"
-                onClick={handlesetIsEdit}
+                onClick={handleSetIsEdit}
               >
                 Редактировать
               </button>
@@ -90,7 +85,7 @@ function Profile({ signOut, handleUpdateUser, isSuccess, is }) {
               <button
                 type="submit"
                 className="profile-form__submit button"
-                disabled={disabledSubmitButton}
+                disabled={disabledSubmitButton || isLoadingReq}
               >
                 Сохранить
               </button>

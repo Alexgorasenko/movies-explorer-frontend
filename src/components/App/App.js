@@ -22,6 +22,7 @@ function App() {
 
   const [isLoadingMovies, setIsLoadingMovies] = useState(false);
   const [isLoadingSavedMovies, setIsLoadingSavedMovies] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setСurrentUser] = useState({});
@@ -38,7 +39,7 @@ function App() {
   const [savedMovies, setSavedMovies] = useState([]);
 
   const token = localStorage.getItem("jwt");
-
+  console.log(isInfoTitle);
   useEffect(() => {
     setTimeout(() => {
       setIsSuccess({
@@ -142,6 +143,8 @@ function App() {
   };
 
   const handleUpdateUser = ({ email, name }) => {
+    setIsLoadingReq(true);
+
     MainApi.patchUserInfo({ email, name })
       .then((data) => {
         setСurrentUser(data);
@@ -150,6 +153,10 @@ function App() {
       .catch((err) => {
         console.log(`Ошибка сервера ${err}`);
         setIsSuccess({ success: false, msg: err });
+      })
+      .finally(() => {
+        setIsLoadingReq(false);
+        setIsEdit(false)
       });
   };
 
@@ -254,6 +261,9 @@ function App() {
                     handleUpdateUser={handleUpdateUser}
                     loggedIn={loggedIn}
                     isSuccess={isSuccess}
+                    isLoadingReq={isLoadingReq}
+                    setIsEdit={setIsEdit}
+                    isEdit={isEdit}
                   />
                 }
               />
