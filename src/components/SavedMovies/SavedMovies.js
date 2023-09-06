@@ -14,7 +14,7 @@ function SavedMovies({
   isInfoTitle,
   isLoadingSavedMovies,
   setIsLoadingMovies,
-  loggedIn
+  loggedIn,
 }) {
   const currentUserInfo = React.useContext(CurrentUserContext);
   const { values, handleOneChange } = useFormWithValidation();
@@ -22,12 +22,9 @@ function SavedMovies({
   const [requestSavedMovie, setRequestSavedMovie] = useState([]);
   const [filteredSavedMovies, setFilteredSavedMovies] = useState([]);
 
-
-
-  console.log('requestSavedMovie', requestSavedMovie);
-  console.log('filteredSavedMovies', filteredSavedMovies);
-  console.log('savedMovies', savedMovies);
-
+  console.log("requestSavedMovie", requestSavedMovie);
+  console.log("filteredSavedMovies", filteredSavedMovies);
+  console.log("savedMovies", savedMovies);
 
   function handleSearchSubmit(inputValue) {
     const moviesList = filterMovies(savedMovies, inputValue, isShortMovie);
@@ -87,7 +84,7 @@ function SavedMovies({
     );
     setFilteredSavedMovies(savedMovies);
     if (searchSaveValue) {
-    handleSearchSubmit(searchSaveValue);
+      handleSearchSubmit(searchSaveValue);
     }
   }, [savedMovies, currentUserInfo]);
 
@@ -97,7 +94,6 @@ function SavedMovies({
     );
     localStorage.setItem(`${currentUserInfo.email} - savedMovieSearch`, "");
   }, [currentUserInfo]);
-
 
   return (
     <section className="saved-movies">

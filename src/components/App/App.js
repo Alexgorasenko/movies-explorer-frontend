@@ -101,7 +101,7 @@ function App() {
     navigate("/");
     setLoggedIn(false);
     setСurrentUser({});
-    setSavedMovies([])
+    setSavedMovies([]);
   };
 
   const handleLogin = () => {
@@ -156,7 +156,7 @@ function App() {
       })
       .finally(() => {
         setIsLoadingReq(false);
-        setIsEdit(false)
+        setIsEdit(false);
       });
   };
 
