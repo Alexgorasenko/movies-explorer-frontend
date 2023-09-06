@@ -100,10 +100,16 @@
   transition: opacity 0.1s linear 0.1s;
 }
 
-.movie-card:hover .movie-card__delete-from-saved-movie {
+.movie-card:hover .movie-card__delete-from-saved-movie{
   opacity: 1;
   cursor: pointer;
 }
+
+.movie-card:hover .movie-card__delete-from-movie{
+  opacity: 1;
+  cursor: pointer;
+}
+
 
 .movie-card:hover .movie-card__favorite {
   opacity: 1;

@@ -5,16 +5,13 @@ import "./Header.css";
 import Navigation from "../Navigation/Navigation";
 import "../Button/Button.css";
 
-function Header(props) {
-  // const islogin = false;
-  const islogin = true;
-
+function Header({ loggedIn }) {
   return (
     <header className="header">
       <Link to="/" className="header__nav-link button">
         <img src={logo} alt="Логотип сайта" className="header__logo" />
       </Link>
-      {islogin ? (
+      {loggedIn ? (
         <Navigation></Navigation>
       ) : (
         <nav className="header__nav-menu">

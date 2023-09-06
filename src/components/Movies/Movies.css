@@ -4,4 +4,17 @@
   align-items: center;
   width: 100%;
   margin-bottom: 80px;
+  position: relative;
+}
+
+.movies__info-title {
+  position: absolute;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  bottom: 70px;
+  margin: 0;
 }

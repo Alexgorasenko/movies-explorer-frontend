@@ -1,36 +1,48 @@
-import React, { useState, useEffect } from "react";
-import { Route, Routes, Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import logo from "../../images/logo.svg";
 import "./PageWithForm.css";
 import "../Button/Button.css";
 import "../Link/Link.css";
+import useFormWithValidation from "../../hooks/useFormWithValidation";
 
 function PageWithForm({
   title,
   name,
   buttonText,
-  onSubmit,
   authDescription,
   authButtonText,
   authButtonLink,
   pageType,
-  handleOneClick,
+  onSubmit,
+  isSuccess,
+  setIsSuccess,
+  isLoadingReq,
+  loggedIn
 }) {
-  const [inputName, setInputName] = useState();
-  const [inputEmail, setInputEmail] = useState();
-  const [inputPassword, setInputPassword] = useState();
+  const { values, handleOneChange, resetForm, errors, isValid } =
+    useFormWithValidation();
 
-  function handleNameOnChange(e) {
-    setInputName(e.target.value);
-  }
+  const { success, msg } = isSuccess;
 
-  function handleEmailOnChange(e) {
-    setInputEmail(e.target.value);
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(values);
+  };
 
-  function handlePasswordOnChange(e) {
-    setInputPassword(e.target.value);
-  }
+  useEffect(() => {
+    resetForm();
+  }, [loggedIn]);
+
+
+
+  useEffect(() => {
+    setIsSuccess({
+      success: true,
+      msg: "",
+      open: false,
+    });
+  }, []);
 
   return (
     <section className="page-form">
@@ -45,7 +57,8 @@ function PageWithForm({
           className="page-form__form"
           id={`form-${name}`}
           action="/"
-          onSubmit={onSubmit}
+          onSubmit={handleSubmit}
+          noValidate
         >
           <div className="page-form__inputs">
             {pageType === "register" ? (
@@ -53,66 +66,76 @@ function PageWithForm({
                 <span className="page-form__input-title">Имя</span>
                 <input
                   type="text"
-                  className="page-form__input"
+                  className={`page-form__input ${
+                    errors.name ? "page-form__input-error" : ""
+                  }`}
                   name="name"
                   placeholder="Введите имя"
                   id="name-input"
                   required
-                  onChange={handleNameOnChange}
+                  onChange={handleOneChange}
                   minLength={2}
                   maxLength={30}
-                  value={inputName || ""}
+                  value={values.name || ""}
+                  disabled={isLoadingReq}
                 />
-                {/* <span className="page-form__error">Вы пропустили это поле.</span> */}
+                <span className="page-form__error">{errors.name || ""}</span>
               </label>
             ) : null}
             <label className="page-form__form-label">
               <span className="page-form__input-title">E-mail</span>
               <input
                 type="email"
-                className="page-form__input"
+                className={`page-form__input ${
+                  errors.email ? "page-form__input-error" : ""
+                }`}
                 name="email"
                 placeholder="Введите email"
                 id="email-input"
                 required
-                onChange={handleEmailOnChange}
-                value={inputEmail || ""}
+                onChange={handleOneChange}
+                value={values.email || ""}
+                disabled={isLoadingReq}
               />
-              {/* <span className="page-form__error">Вы пропустили это поле.</span> */}
+              <span className="page-form__error">{errors.email || ""}</span>
             </label>
             <label className="page-form__form-label">
               <span className="page-form__input-title">Пароль</span>
               <input
                 type="password"
-                className="page-form__input page-form__input-error"
+                className={`page-form__input ${
+                  errors.password && "page-form__input-error"
+                }`}
                 name="password"
                 placeholder="Введите Пароль"
                 id="password-input"
                 required
-                onChange={handlePasswordOnChange}
+                onChange={handleOneChange}
                 minLength={2}
-                value={inputPassword || ""}
+                value={values.password || ""}
+                disabled={isLoadingReq}
               />
-              <span className="page-form__error">Что-то пошло не так...</span>
+              <span className="page-form__error">{errors.password || ""}</span>
             </label>
           </div>
           <div className="page-form__submit-container">
             <button
               type="submit"
               className="page-form__submit button"
-              onClick={handleOneClick}
+              disabled={!isValid || isLoadingReq}
             >
               {buttonText}
             </button>
-            <span className="page-form__submit-error">
-              При обновлении профиля произошла ошибка.
-            </span>
+            {!success && <span className="page-form__submit-error">{msg}</span>}
           </div>
         </form>
         <div className="page-form__auth">
           <p className="page-form__auth-text">
             {authDescription}{" "}
-            <Link to={authButtonLink} className="page-form__auth-link link">
+            <Link
+              to={authButtonLink}
+              className="page-form__auth-link link"
+            >
               {authButtonText}
             </Link>
           </p>

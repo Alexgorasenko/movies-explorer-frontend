@@ -1,49 +1,55 @@
 import React, { useState, useEffect } from "react";
 import "./Profile.css";
 import "../Button/Button.css";
-import { Link } from "react-router-dom";
+import useFormWithValidation from "../../hooks/useFormWithValidation";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-function Profile() {
-  const [inputName, setInputName] = useState();
-  const [inputEmail, setInputEmail] = useState();
-  const [isOneCange, setIsOneCange] = useState(false);
+function Profile({ signOut, handleUpdateUser, isSuccess, isLoadingReq, isEdit, setIsEdit }) {
+  const currentUserInfo = React.useContext(CurrentUserContext);
 
-  function handleNameOnChange(e) {
-    setInputName(e.target.value);
-  }
+  const { values, handleOneChange, resetForm, errors, isValid } =
+    useFormWithValidation();
+  const { success, msg, open } = isSuccess;
 
-  function handleEmailOnChange(e) {
-    setInputEmail(e.target.value);
-  }
+  useEffect(() => {
+    resetForm(currentUserInfo, {}, true);
+  }, [currentUserInfo, resetForm]);
 
-  function handleIsOneCange(e) {
+  const disabledSubmitButton =
+    !isValid ||
+    (currentUserInfo.name === values.name &&
+      currentUserInfo.email === values.email);
+
+      // const [isEdit, setIsEdit] = useState(false);
+
+  function handleSetIsEdit(e) {
     e.preventDefault();
-    setIsOneCange(true);
+    setIsEdit(true);
   }
 
-  function handleIsSave(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setIsOneCange(false);
-  }
+    handleUpdateUser(values);
+    // handleSetIsEdit(e);
+  };
 
   return (
     <section className="profile">
-      <h3 className="profile__title">Привет, Виталий!</h3>
-      <form className="profile__form">
+      <h3 className="profile__title">Привет, {currentUserInfo.name}!</h3>
+      <form className="profile__form" onSubmit={handleSubmit}>
         <div className="profile__form-input-container">
           <label className="profile__form-input-title">Имя</label>
           <input
             type="name"
             className="profile__input"
             name="name"
-            value={inputName || ""}
-            onChange={handleNameOnChange}
+            value={values.name || ""}
+            onChange={handleOneChange}
             required
             placeholder="Name"
+            disabled={!isEdit || isLoadingReq}
           />
-          {/* <span className="profile__from-input-error">
-            Вы пропустили это поле.
-          </span> */}
+          <span className="profile__from-input-error">{errors.name || ""}</span>
         </div>
         <div className="profile__form-input-container">
           <label className="profile__form-input-title">E-mail</label>
@@ -51,43 +57,50 @@ function Profile() {
             type="email"
             className="profile__input"
             name="email"
-            value={inputEmail || ""}
-            onChange={handleEmailOnChange}
+            value={values.email || ""}
+            onChange={handleOneChange}
             required
             placeholder="E-mail"
+            disabled={!isEdit || isLoadingReq}
           />
-          {/* <span className="profile__from-input-error">
-            Вы пропустили это поле.
-          </span> */}
+          <span className="profile__from-input-error">
+            {errors.email || ""}
+          </span>
         </div>
         <div className="profile__buttons">
-          {!isOneCange ? (
+          {!isEdit ? (
             <>
               <button
                 className="profile__form-edit button"
-                onClick={handleIsOneCange}
+                onClick={handleSetIsEdit}
               >
                 Редактировать
               </button>
-              <Link to="/">
-                <button className="profile__logout button">
-                  Выйти из аккаунта
-                </button>
-              </Link>
+              <button className="profile__logout button" onClick={signOut}>
+                Выйти из аккаунта
+              </button>
             </>
           ) : (
             <div className="profile-form__submit-container">
               <button
                 type="submit"
                 className="profile-form__submit button"
-                onClick={handleIsSave}
+                disabled={disabledSubmitButton || isLoadingReq}
               >
                 Сохранить
               </button>
-              <span className="profile-form__submit-error">
-                При обновлении профиля произошла ошибка.
-              </span>
             </div>
+          )}
+          {success ? (
+            <span
+              className={`profile-form__submit-success ${
+                open && "profile-form__submit-success_active"
+              }`}
+            >
+              Профиль успешно обновлён
+            </span>
+          ) : (
+            <span className="profile-form__submit-error">{msg}</span>
           )}
         </div>
       </form>

@@ -10,7 +10,8 @@ function Footer() {
     <footer
       className={
         location.pathname === "/profile" ? "footer__hidden " : "footer"
-      }>
+      }
+    >
       <h3 className="footer__title">
         Учебный проект Яндекс.Практикум х BeatFilm.
       </h3>
