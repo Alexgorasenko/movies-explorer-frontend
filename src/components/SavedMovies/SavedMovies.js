@@ -82,7 +82,7 @@ function SavedMovies({
     if (searchSaveValue) {
       handleSearchSubmit(searchSaveValue);
     }else{
-      handleSearchSubmit('');
+      setRequestSavedMovie(savedMovies);
     }
   }, [savedMovies, currentUserInfo]);
 
