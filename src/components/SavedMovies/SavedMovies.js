@@ -80,11 +80,13 @@ function SavedMovies({
     );
     setFilteredSavedMovies(savedMovies);
     if (searchSaveValue) {
+      console.log(321);
       handleSearchSubmit(searchSaveValue);
     }else{
+      console.log(123);
       setRequestSavedMovie(savedMovies);
     }
-  }, [savedMovies, currentUserInfo]);
+  }, [savedMovies, currentUserInfo, requestSavedMovie]);
 
   useEffect(() => {
     const searchSaveValue = localStorage.getItem(
