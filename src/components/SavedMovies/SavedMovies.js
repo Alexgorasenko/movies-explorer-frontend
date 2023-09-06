@@ -22,10 +22,6 @@ function SavedMovies({
   const [requestSavedMovie, setRequestSavedMovie] = useState([]);
   const [filteredSavedMovies, setFilteredSavedMovies] = useState([]);
 
-  console.log("requestSavedMovie", requestSavedMovie);
-  console.log("filteredSavedMovies", filteredSavedMovies);
-  console.log("savedMovies", savedMovies);
-
   function handleSearchSubmit(inputValue) {
     const moviesList = filterMovies(savedMovies, inputValue, isShortMovie);
     localStorage.setItem(
@@ -85,6 +81,8 @@ function SavedMovies({
     setFilteredSavedMovies(savedMovies);
     if (searchSaveValue) {
       handleSearchSubmit(searchSaveValue);
+    }else{
+      handleSearchSubmit('');
     }
   }, [savedMovies, currentUserInfo]);
 
