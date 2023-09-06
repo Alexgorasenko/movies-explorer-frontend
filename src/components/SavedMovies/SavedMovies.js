@@ -88,16 +88,15 @@ function SavedMovies({
     setFilteredSavedMovies(savedMovies);
     if (searchSaveValue) {
     handleSearchSubmit(searchSaveValue);
-
     }
   }, [savedMovies, currentUserInfo]);
 
-  // useEffect(() => {
-  //   const searchSaveValue = localStorage.getItem(
-  //     `${currentUserInfo.email} - savedMovieSearch`
-  //   );
-  //   localStorage.setItem(`${currentUserInfo.email} - savedMovieSearch`, "");
-  // }, [currentUserInfo]);
+  useEffect(() => {
+    const searchSaveValue = localStorage.getItem(
+      `${currentUserInfo.email} - savedMovieSearch`
+    );
+    localStorage.setItem(`${currentUserInfo.email} - savedMovieSearch`, "");
+  }, [currentUserInfo]);
 
 
   return (
